@@ -16,17 +16,17 @@ Il utilise z3cform comme moteur de formulaire qui sera donc également installé
 Dans les versions précédentes de Plone vous utilisiez le portal_properties
 qui est un conteneur de "feuille de propriétés" (propertysheet).
 Dans son utilisation vous pouviez ajouter, modifier ou supprimer vos
-configuration en ZMI ou via les profiles d'installation.
+configurations en ZMI ou via les profils d'installation.
 Vous pouviez également accéder à vos propriétés par l'appel à l'API de portal_properties.
 
 
-Alors pourquoi changer ? Le passage aux composants de zope date de 2001 avec
-l'apparition de Zope3; La communauté Plone a fait le choix de re-écrire
+Alors pourquoi changer ? Le passage aux composants de Zope date de 2001 avec
+l'apparition de Zope3 ; La communauté Plone a fait le choix de ré-écrire
 certaines parties de CMF en utilisant les composants dans le plus grand
 respect de Zope2. On peut ainsi voir l'ensemble des packages plone.* comme des modules
 python/ztk et tous les packages plone.app.* comme leur intégration dans Zope2/CMF.
-Au delà des raisons technique l'interface graphique de gestion des confiugration s'en trouve améliorée.
-On voit aussi disparaitre la notion de propertysheet.
+Au-delà des raisons techniques, l'interface graphique de gestion des configurations s'en trouve améliorée.
+On voit aussi disparaître la notion de propertysheet.
 
 # Présentation de plone.registry
 
@@ -47,14 +47,14 @@ Voici la liste des fichiers importants:
 * IRegistry
 
 
-IPersistentField est un champs persistent. Un champs définit un type de donnée,
-par exemple le type nombre entier. Il définit également des métadonnées dessus:
+IPersistentField est un champ persistant. Un champ définit un type de donnée,
+par exemple le type nombre entier. Il définit également des métadonnées dessus :
 le nom, la description, quelques contraintes comme la valeur minimale par exemple.
-La liste des types de champs est disponible sur la documentation officiel ou dans le fichier field.py.
-En dehors des champs de type primitif, on retrouve un champs de type référence vers un autre Record.
+La liste des types de champs est disponible sur la documentation officielle ou dans le fichier field.py.
+En dehors des champs de type primitif, on retrouve un champ de type référence vers un autre Record.
 
 IRecord est un enregistrement dans le registre de configuration.
-Cet objet appartient donc au registre et garde un pointeur vers celui ci via l'attribut __parent__.
+Cet objet appartient donc au registre et garde un pointeur vers celui-ci via l'attribut __parent__.
 L'attribut field correspond à une instance de IPersistentField et l'attribut value correspond à la valeur de votre configuration.
 
 IRecordProxy est utilisé dans le cadre de l'utilisation de schéma de configuration.
@@ -65,7 +65,7 @@ Les accès au valeur se font alors par les attributs de l'instance.
 
 IRegistry est le chef d'orchestre.
 C'est le composant que vous allez demander via l'utilisation de queryUtility.
-Il est le conteneur des enregistrements et dispose d'une api permettant d'accéder à la configuration de différente manière:
+Il est le conteneur des enregistrements et dispose d'une API permettant d'accéder à la configuration de différentes manières :
 
 * clé/valeur
 * record proxy
@@ -83,7 +83,7 @@ Chaque clé est affichée sous la forme d'un lien qui ouvrira un 'overlay' conte
 
 # Utilisation (développeur & intégrateur)
 
-Qui dit configuration dit aussi profile de configuration.
+Qui dit configuration dit aussi profil de configuration.
 Lors de l'installation de votre module vous souhaitez disposer d'une configuration.
 Voici la marche à suivre.
 
@@ -116,9 +116,9 @@ Vous pouvez cependant outre passer cela de la manière suivante et proposer d'au
     </registry>
 
 
-C'est pratique lorsque vous effectuez une intégration de plusieurs modules et que vous souhaitez proposer une autreconfiguration que celle par défaut d'un module X ou Y.
+C'est pratique lorsque vous effectuez une intégration de plusieurs modules et que vous souhaitez proposer une autre configuration que celle par défaut d'un module X ou Y.
 
-Vous pouvez également demander au registre de ne pas prendre en compte certains champs de votre interface::
+Vous pouvez également demander au registre de ne pas prendre en compte certains champs de votre interface :
 
     <records interface="my.package.interfaces.IZooSettings">
       <omit>messageOfTheDay</omit>
@@ -130,10 +130,10 @@ Vous pouvez également demander au registre de ne pas prendre en compte certains
  
 
 Nous pouvons maintenant apprendre à utiliser cette configuration.
-Vous pouvez récupérer votre configuration sous deux forme.
-Soit vous continuer avec un objet correspondant aux schémas de données que plone.registry se charge de construire pour vous avec la classe Record, soit vous décidez d'utiliser la configuration sous forme de dictionnaire python (clé; valeur)
+Vous pouvez récupérer votre configuration sous deux formes.
+Soit vous continuez avec un objet correspondant aux schémas de données que plone.registry se charge de construire pour vous avec la classe Record, soit vous décidez d'utiliser la configuration sous forme de dictionnaire Python (clé ; valeur)
 
-La base est toujours la même::
+La base est toujours la même :
 
 
     from zope import component

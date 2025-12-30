@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Comment connaitre les vues utilisées dans votre site Plone"
+title:  "Comment connaître les vues utilisées dans votre site Plone"
 categories: fr
 tags: plone gist
 ---

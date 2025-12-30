@@ -5,11 +5,11 @@ categories: fr
 tags: plone module
 ---
 
-Le module [collective.masonry](http://pypi.python.org/pypi/collective.masonry) a été mis à jour ! Les nouveautés sont:
+Le module [collective.masonry](http://pypi.python.org/pypi/collective.masonry) a été mis à jour ! Les nouveautés sont :
 
-Le module JQuery [Masonry](http://masonry.desandro.com/index.html) a été mis à jour à la version 2.0 ainsi que le module JQuery imageLoaded qui l'accompagne.
+Le module jQuery [Masonry](http://masonry.desandro.com/index.html) a été mis à jour à la version 2.0 ainsi que le module jQuery imageLoaded qui l'accompagne.
 
-La page de démonstration a aussi été mis à jour avec des images.
+La page de démonstration a aussi été mise à jour avec des images.
 
 Les deux conteneur de portlets ont été déplacés:
 

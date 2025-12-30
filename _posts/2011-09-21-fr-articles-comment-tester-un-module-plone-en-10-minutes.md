@@ -8,24 +8,24 @@ tags: plone
 # Introduction
 
 Quand on travaille avec un CMS, il est courant de vouloir tester un module
-et de ne pas le faire par faute de temps. Ce que vous ne savez peut être pas
+et de ne pas le faire par manque de temps. Ce que vous ne savez peut-être pas,
 c'est qu'un module peut être testé en 10 minutes.
 
 ## Prérequis
 
-Il faut pour suivre ce tutorial disposer d'un python version 2.6 avec
+Il faut pour suivre ce tutoriel disposer d'un Python version 2.6 avec
 le nécessaire en dépendances (support SSL, tar, zip, libjpeg, ...)
 
-Un autre prérequis est de connaitre l'adresse URL du dépot de code utilisé
+Un autre prérequis est de connaître l'adresse URL du dépôt de code utilisé
 pour ce module. Avec Plone vous avez souvent:
 
 * [svn collective](https://svn.plone.org/collective/)
 * [github collective](https://github.com/collective)
 * un github privé
 
-Sinon c'est pas bon signe, votre module ne fait pas partie de la communauté Plone.
+Sinon ce n'est pas bon signe, votre module ne fait pas partie de la communauté Plone.
 
-# Tutorial
+# Tutoriel
 
 ## Initialisation (2 minutes)
 
@@ -56,17 +56,17 @@ Il faut jeter un oeil pour vérifier quelques points:
 
 ## Tester le module
 
-* ajouter un site plone
+* ajouter un site Plone
 * installer le module
-* tester les fonctionnalités que vous avez compris du default profile du module
+* tester les fonctionnalités que vous avez comprises du profil par défaut du module
 
-Si Il vous reste un peu de temps vous pouvez faire la traduction directement et faire un mail sur la liste de diffusion plone-fr.
+S'il vous reste un peu de temps, vous pouvez faire la traduction directement et faire un mail sur la liste de diffusion plone-fr.
 
 # Conclusion
 
 On ne prend pas assez le temps de vérifier les dépendances et l'état d'un module.
-Le problème c est qu'après quand il y a un soucis sur la production c est bien vous qu'on va venir voir,
+Le problème, c'est qu'après quand il y a un souci sur la production, c'est bien vous qu'on va venir voir,
 et vous serez responsable de ce code.
 
-C'est bien la que le logiciel libre prend tout son sens. En ayant des gens capable de faire maintenir du code
-écrit par quelqu'un qui n'est plus la.
+C'est bien là que le logiciel libre prend tout son sens. En ayant des gens capables de maintenir du code
+écrit par quelqu'un qui n'est plus là.

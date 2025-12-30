@@ -8,15 +8,15 @@ tags:
 
 
 Jekyll un générateur de site Internet "statique" créé avec la technologie Ruby.
-Ce n'est pas un CMS vous n'aurez donc pas de backoffice.
+Ce n'est pas un CMS, vous n'aurez donc pas de back-office.
 
-Le principe est de créer des fichiers puis de demander à jekyll de constuire
+Le principe est de créer des fichiers puis de demander à Jekyll de construire
 le site.
 
-L'intérêt de cet outil réside dans le fait que "github" supporte cette
-technologie. Par exemple le site de Twitter Bootstrap est réalisé avec Jekyll.
+L'intérêt de cet outil réside dans le fait que "GitHub" supporte cette
+technologie. Par exemple, le site de Twitter Bootstrap est réalisé avec Jekyll.
 
-En effet vous pouvez faire un dépot avec votre site jekyll et github s'occupe
+En effet, vous pouvez faire un dépôt avec votre site Jekyll et GitHub s'occupe
 de générer le HTML et de le servir.
 
 [Site Internet officiel de Jekyll](http://jekyllrb.com)

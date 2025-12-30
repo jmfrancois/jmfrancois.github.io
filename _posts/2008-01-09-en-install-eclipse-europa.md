@@ -8,9 +8,9 @@ tags: linux eclipse
 
 <!-- https://toutpt.wordpress.com/page/3/ -->
 
-Hi there, I have spent long time tring install my eclipse this week...  So I want to keep a log of this work. Here is it, a list of modules named with correct versions (that are working together).
+Hi there, I have spent a long time trying to install Eclipse this week. So I want to keep a log of this work. Here it is: a list of modules with their correct versions (that are working together).
 
-* eclipse 3.3.1.1 (needeed for sure)
+* eclipse 3.3.1.1 (needed for sure)
 * acceleo-runtime-2.1.1
 * mdt-uml2-SDK-2.1.1 (uml2 support)
 * emf-sdo-xsd-SDK-2.3.1.zip (modeling framework)
