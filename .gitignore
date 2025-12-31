@@ -2,3 +2,5 @@
 .pydevproject
 _site
 .jekyll-cache
+dist
+node_modules

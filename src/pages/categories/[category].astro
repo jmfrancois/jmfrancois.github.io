@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const allCategories = new Set<string>();
+  
+  posts.forEach((post) => {
+    post.data.categories?.forEach((cat) => {
+      if (cat && cat.trim()) {
+        allCategories.add(cat.trim());
+      }
+    });
+  });
+  
+  return Array.from(allCategories).map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props;
+const posts = await getCollection('posts');
+const filteredPosts = posts
+  .filter((post) => post.data.categories?.includes(category))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title={`Posts in category "${category}" - Jean-Michel FRANCOIS`}>
+  <div class="max-w-2xl mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-2">Category: <span class="text-blue-600">{category}</span></h1>
+    <p class="text-gray-600 mb-8">{filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''}</p>
+    
+    {filteredPosts.length > 0 ? (
+      filteredPosts.map((post) => (
+        <article class="mb-8 pb-6 border-b border-gray-200 last:border-b-0">
+          <h2 class="text-2xl font-semibold mb-2">
+            <a href={`/posts/${post.slug}`} class="text-gray-900 hover:text-blue-600 transition-colors">
+              {post.data.title}
+            </a>
+          </h2>
+          <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </time>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map((tag) => (
+                  <span class="bg-gray-100 px-3 py-1 rounded-full text-xs font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))
+    ) : (
+      <p class="text-gray-500 text-center py-8">No posts found in this category.</p>
+    )}
+  </div>
+</BaseLayout>

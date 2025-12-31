@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* ===========================
+   Modern Black & White Theme
+   =========================== */
+
+/* Prose provides markdown styling via @tailwindcss/typography */
+/* No dark mode needed for this light theme */
+
+/* Custom overrides for prose */
+.prose {
+  @apply text-gray-800;
+}
+
+.prose p {
+  @apply mb-6 leading-relaxed;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-gray-900 font-bold mt-8 mb-4;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800 no-underline hover:underline;
+}
+
+.prose code {
+  @apply bg-gray-100 text-gray-800 px-2 py-1 rounded font-mono text-sm;
+}
+
+.prose pre {
+  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto;
+}
+
+.prose pre code {
+  @apply bg-transparent text-inherit;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-700;
+}
+
+.prose strong {
+  @apply font-bold text-gray-900;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose ul,
+.prose ol {
+  @apply pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}

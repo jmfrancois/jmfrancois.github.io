@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const tagsMap = new Map<string, number>();
+
+posts.forEach((post) => {
+  post.data.tags?.forEach((tag) => {
+    if (tag && tag.trim()) {
+      tagsMap.set(tag.trim(), (tagsMap.get(tag.trim()) || 0) + 1);
+    }
+  });
+});
+
+const sortedTags = Array.from(tagsMap.entries()).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Tags - Jean-Michel FRANCOIS">
+  <div class="max-w-2xl mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-8">Tags</h1>
+    
+    {sortedTags.length > 0 ? (
+      <div class="flex flex-wrap gap-4">
+        {sortedTags.map(([tag, count]) => (
+          <a 
+            href={`/tags/${tag}`}
+            class="bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg p-4 transition-colors"
+          >
+            <div class="text-lg font-semibold text-blue-600">{tag}</div>
+            <div class="text-sm text-gray-600">{count} post{count !== 1 ? 's' : ''}</div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-500 text-center py-8">No tags found.</p>
+    )}
+  </div>
+</BaseLayout>
