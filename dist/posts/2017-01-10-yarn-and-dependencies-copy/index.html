@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Favicon & Icons --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/assets/ico/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/assets/ico/apple-icon-180x180.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/ico/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/ico/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/ico/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/ico/apple-icon-114x114.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/ico/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="144x144" href="/assets/ico/android-icon-144x144.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/ico/favicon-96x96.png"><link rel="icon" type="image/png" sizes="72x72" href="/assets/ico/android-icon-72x72.png"><link rel="icon" type="image/png" sizes="36x36" href="/assets/ico/android-icon-36x36.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/ico/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><!-- Meta Tags --><meta name="generator" content="Astro v5.16.6"><meta name="description" content="Jean-Michel FRANCOIS - Blog"><title>Yarn et les dépendances : Une révolution dans la gestion des packages JavaScript</title><link rel="stylesheet" href="/_astro/_slug_.BJBslw4O.css"></head> <body class="flex flex-col min-h-screen bg-white text-gray-900"> <!-- Top Navigation Bar --> <header class="sticky top-0 z-40 bg-white border-b border-gray-200"> <div class="px-8 py-4 flex items-center justify-between"> <div class="flex items-center gap-8"> <a href="/" class="text-2xl font-bold text-black hover:text-gray-700 transition">
+JM François
+</a> <nav class="flex items-center gap-6"> <a href="/" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Home
+</a> <a href="/categories" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Categories
+</a> <a href="/tags" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Tags
+</a> </nav> </div> <!-- Social Links --> <div class="flex items-center gap-5"> <!-- Twitter/X --> <a href="https://www.twitter.com/toutpt_fr" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="Twitter"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path> </svg> </a> <!-- LinkedIn --> <a href="http://www.linkedin.com/profile/view?id=42808053" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-700 transition" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.05-8.805 0-9.719h3.554v1.375c.427-.659 1.191-1.599 2.897-1.599 2.117 0 3.704 1.385 3.704 4.362v5.581zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.955.771-1.715 1.921-1.715 1.147 0 1.915.76 1.915 1.715 0 .953-.768 1.715-1.921 1.715zm1.946 11.597H3.392V9.588h3.891v10.864zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path> </svg> </a> <!-- Stack Overflow --> <a href="http://stackoverflow.com/users/622081/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition" aria-label="Stack Overflow"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.134v6.404h15.008zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852h10.438v-2.137H6.37v2.137zM7.17 13.995h9.282v-2.137H7.17v2.137zm8.945-4.979H6.248v2.137h9.867v-2.137z"></path> </svg> </a> <!-- GitHub (personal) --> <a href="https://github.com/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- GitHub (Talend) --> <a href="https://github.com/jmfrancois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub (Talend)"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- NPM --> <a href="https://www.npmjs.com/~toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-red-600 transition" aria-label="NPM"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.012-10.382h-3.456L12.04 19.17H5.13V5.323z"></path> </svg> </a> <!-- CV (document icon) --> <a href="https://www.doyoubuzz.com/jeanmichel-francois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition border-l border-gray-300 pl-5" aria-label="CV"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path> <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"></polyline> <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="2"></line> <line x1="9" y1="14" x2="15" y2="14" stroke="currentColor" stroke-width="2"></line> </svg> </a> </div> </div> </header> <!-- Sidebar --> <div class="flex flex-1"> <aside id="sidebar" class="w-64 bg-black text-white overflow-y-auto flex flex-col"> <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏠</span> <span>Home</span> </a> <a href="/categories" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">📁</span> <span>Categories</span> </a> <a href="/tags" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏷️</span> <span>Tags</span> </a> <!-- Side Projects Card --> <div class="mx-4 mb-6 p-4 bg-gray-900 rounded-lg border border-gray-800"> <h3 class="text-white font-bold mb-3 text-sm">Side Projects</h3> <div class="space-y-2"> <a href="https://toutpt.github.io/fuelcalc/index.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>fuelcalc</span> </a> <a href="https://toutpt.github.io/osm-transport-editor/index.html#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>osm transport editor</span> </a> </div> </div> <div class="p-6 border-t border-gray-800 text-gray-400 text-sm"> <p>&copy; 2025 JM François</p> </div> </aside> <!-- Main Content --> <main class="flex-1 w-full"> <div class="max-w-4xl mx-auto px-6 py-12">  <article class="post max-w-2xl mx-auto px-4 py-8"> <header class="post-header mb-8 border-b border-gray-200 pb-6"> <h1 class="text-4xl font-bold mb-4">Yarn et les dépendances : Une révolution dans la gestion des packages JavaScript</h1> <div class="post-meta text-gray-600"> <time datetime="2017-06-10T00:00:00.000Z"> June 10, 2017 </time> <div class="categories mt-2"> <span class="font-semibold">Categories:</span> <a href="/categories/fr" class="ml-2 text-blue-600 hover:text-blue-800">fr</a> </div> </div> </header> <div class="post-content prose prose-sm">  <p>Dans le monde JavaScript, la gestion des dépendances a toujours été un défi. Puis est arrivé Yarn, qui a changé la donne. Retour sur cette révolution et ses avantages, particulièrement dans le contexte des mono-repositories.</p>
+<h2 id="lhistoire-de-yarn">L’histoire de Yarn</h2>
+<p>En octobre 2016, <strong>Facebook</strong>, en collaboration avec <strong>Exponent</strong> (aujourd’hui Expo), <strong>Google</strong> et <strong>Tilde</strong>, annonce la sortie de Yarn. Le projet est principalement mené par <strong>Sebastian McKenzie</strong>, ingénieur chez Facebook et créateur de Babel.</p>
+<p>À cette époque, npm (le gestionnaire de packages par défaut de Node.js) souffrait de plusieurs problèmes :</p>
+<ul>
+<li><strong>Lenteur</strong> : Les installations prenaient un temps considérable</li>
+<li><strong>Non-déterminisme</strong> : Deux installations successives pouvaient donner des résultats différents</li>
+<li><strong>Manque de fiabilité</strong> : Les installations échouaient parfois sans raison apparente</li>
+<li><strong>Problèmes de sécurité</strong> : Peu de vérifications sur l’intégrité des packages</li>
+</ul>
+<p>Yarn est né de la frustration de grandes entreprises qui géraient des bases de code massives avec des milliers de dépendances. Facebook, en particulier, avait besoin d’une solution plus robuste pour gérer React, React Native et ses nombreux autres projets open source.</p>
+<h2 id="ladoption-fulgurante">L’adoption fulgurante</h2>
+<p>L’adoption de Yarn a été remarquablement rapide :</p>
+<ul>
+<li><strong>Octobre 2016</strong> : Sortie de Yarn 0.15.1</li>
+<li><strong>Fin 2016</strong> : Adoption par de nombreux projets majeurs (React, Angular, Ember…)</li>
+</ul>
+<p>Chez <strong>Talend</strong>, nous avons adopté Yarn dès janvier car nous souffrions terriblement du manque de stabilite des installations avec NPM et le besoin de faire un monorepo c est fait sentir tres vite pour eviter le lag des releases entre les differents repository.</p>
+<h2 id="le-fichier-yarnlock--le-héros-méconnu">Le fichier yarn.lock : Le héros méconnu</h2>
+<p>Le véritable génie de Yarn réside dans son fichier <code>yarn.lock</code>. C’est ce fichier qui garantit le <strong>déterminisme</strong> des installations.</p>
+<h3 id="comment-ça-marche">Comment ça marche ?</h3>
+<p>Quand vous installez un package avec Yarn, il crée (ou met à jour) un fichier <code>yarn.lock</code> qui contient :</p>
+<ul>
+<li>Les versions <strong>exactes</strong> de tous les packages installés</li>
+<li>Les versions de toutes les dépendances transitives</li>
+<li>Les checksums pour vérifier l’intégrité</li>
+</ul>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#E6DB74">"@babel/core@^7.0.0"</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#E6DB74">  version "7.12.10"</span></span>
+<span class="line"><span style="color:#E6DB74">  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.12.10.tgz#..."</span></span>
+<span class="line"><span style="color:#E6DB74">  integrity sha512-eTAlQKq65zHfkHZV0sIVODCPGVgoo1HdBlbSLi9CqOzuZanMv2ihzY+4paiKr1mH+XmYESMAmJ/dpZ68eN6d8w==</span></span>
+<span class="line"><span style="color:#F92672">  dependencies</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#E6DB74">    "@babel/code-frame"</span><span style="color:#E6DB74"> "^7.10.4"</span></span>
+<span class="line"><span style="color:#E6DB74">    "@babel/generator"</span><span style="color:#E6DB74"> "^7.12.10"</span></span>
+<span class="line"><span style="color:#AE81FF">    ...</span></span></code></pre>
+<h3 id="pourquoi-cest-crucial">Pourquoi c’est crucial ?</h3>
+<p>Imaginez ce scénario classique avec npm (avant npm 5) :</p>
+<ol>
+<li>Développeur A installe les dépendances : <code>package.json</code> spécifie <code>"lodash": "^4.0.0"</code></li>
+<li>Lodash 4.17.10 est installé</li>
+<li>Deux mois plus tard, Lodash 4.17.20 sort avec un bug</li>
+<li>Développeur B clone le projet et installe : il obtient la version 4.17.20</li>
+<li>L’application ne fonctionne plus chez B mais fonctionne chez A</li>
+<li>Début d’un long debugging…</li>
+</ol>
+<p>Avec <code>yarn.lock</code>, ce problème n’existe plus. Les deux développeurs obtiennent <strong>exactement</strong> la même version de chaque package.</p>
+<h2 id="yarn-et-les-mono-repositories">Yarn et les Mono-repositories</h2>
+<p>C’est dans le contexte des <strong>mono-repositories</strong> que Yarn brille particulièrement. Un monorepo, c’est un repository unique contenant plusieurs projets (souvent appelés “packages” ou “workspaces”).</p>
+<h3 id="le-problème-avant-yarn-workspaces">Le problème avant Yarn Workspaces</h3>
+<p>Prenons un exemple concret chez Talend. Nous avions :</p>
+<ul>
+<li>Un package de composants UI (<code>@talend/components</code>)</li>
+<li>Un package de redux actions (<code>@talend/actions</code>)</li>
+<li>Une application consommant les deux</li>
+</ul>
+<p>Avant Yarn Workspaces, chaque package avait son propre <code>node_modules</code> :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>monorepo/</span></span>
+<span class="line"><span>├── packages/</span></span>
+<span class="line"><span>│   ├── components/</span></span>
+<span class="line"><span>│   │   └── node_modules/    (React 16.8.0, lodash 4.17.10...)</span></span>
+<span class="line"><span>│   ├── actions/</span></span>
+<span class="line"><span>│   │   └── node_modules/    (React 16.8.0, lodash 4.17.15...)</span></span>
+<span class="line"><span>│   └── app/</span></span>
+<span class="line"><span>│       └── node_modules/     (React 16.8.0, lodash 4.17.20...)</span></span></code></pre>
+<p>Problèmes :</p>
+<ul>
+<li><strong>Duplication massive</strong> : React installé 3 fois !</li>
+<li><strong>Versions différentes</strong> : Lodash en 3 versions différentes</li>
+<li><strong>Espace disque</strong> : Des gigaoctets gaspillés</li>
+<li><strong>Temps d’installation</strong> : Multiplié par le nombre de packages</li>
+<li><strong>Conflits de versions</strong> : Difficiles à détecter</li>
+</ul>
+<h3 id="la-solution--yarn-workspaces">La solution : Yarn Workspaces</h3>
+<p>Yarn Workspaces (introduit en Yarn 1.0, septembre 2017) résout ces problèmes élégamment.</p>
+<p>Configuration dans le <code>package.json</code> racine :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  "private"</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">true</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  "workspaces"</span><span style="color:#F8F8F2">: [</span></span>
+<span class="line"><span style="color:#CFCFC2">    "packages/*"</span></span>
+<span class="line"><span style="color:#F8F8F2">  ]</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span></code></pre>
+<p>Résultat :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>monorepo/</span></span>
+<span class="line"><span>├── node_modules/         (UN SEUL node_modules à la racine)</span></span>
+<span class="line"><span>│   ├── react/           (Version unique : 16.8.0)</span></span>
+<span class="line"><span>│   ├── lodash/          (Version unique : 4.17.20)</span></span>
+<span class="line"><span>│   ├── @talend/</span></span>
+<span class="line"><span>│   │   ├── components/  (symlink vers packages/components)</span></span>
+<span class="line"><span>│   │   └── actions/     (symlink vers packages/actions)</span></span>
+<span class="line"><span>├── packages/</span></span>
+<span class="line"><span>│   ├── components/</span></span>
+<span class="line"><span>│   ├── actions/</span></span>
+<span class="line"><span>│   └── app/</span></span>
+<span class="line"><span>└── yarn.lock            (UN SEUL fichier de lock)</span></span></code></pre>
+<h3 id="les-avantages-en-pratique">Les avantages en pratique</h3>
+<p>Chez Talend, la migration vers Yarn Workspaces nous a apporté :</p>
+<ol>
+<li><strong>Réduction de 70% de l’espace disque</strong> utilisé par node_modules</li>
+<li><strong>Installation 3x plus rapide</strong> : Une seule installation au lieu de N</li>
+<li><strong>Cohérence garantie</strong> : Impossible d’avoir des versions différentes d’une machine a l’autre</li>
+<li><strong>Développement simplifié</strong> : Les changements dans un package sont immédiatement visibles dans les autres</li>
+<li><strong>CI/CD optimisé</strong> : Un seul <code>yarn install</code> pour tout le monorepo</li>
+</ol>
+<h3 id="exemple-concret">Exemple concret</h3>
+<p>Avant, pour travailler sur <code>@talend/components</code> et voir les changements dans l’app :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#66D9EF">cd</span><span style="color:#E6DB74"> packages/components</span></span>
+<span class="line"><span style="color:#88846F"># faire des changements</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> build</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> pack</span></span>
+<span class="line"><span style="color:#66D9EF">cd</span><span style="color:#E6DB74"> ../app</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> add</span><span style="color:#E6DB74"> ../components/talend-components-v1.0.0.tgz</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> start</span></span></code></pre>
+<p>Avec Yarn Workspaces :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#66D9EF">cd</span><span style="color:#E6DB74"> packages/components</span></span>
+<span class="line"><span style="color:#88846F"># faire des changements</span></span>
+<span class="line"><span style="color:#66D9EF">cd</span><span style="color:#E6DB74"> ../app</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> start</span></span>
+<span class="line"><span style="color:#88846F"># Les changements sont immédiatement visibles ! 🎉</span></span></code></pre>
+<h2 id="les-autres-avantages-de-yarn">Les autres avantages de Yarn</h2>
+<p>Au-delà des workspaces, Yarn offre de nombreux autres avantages :</p>
+<h3 id="1-performance">1. Performance</h3>
+<ul>
+<li><strong>Installation parallèle</strong> : Yarn télécharge et installe plusieurs packages en parallèle</li>
+<li><strong>Cache offline</strong> : Une fois un package téléchargé, il est mis en cache</li>
+<li><strong>Installation déterministe</strong> : Même ordre d’installation = performances prévisibles</li>
+</ul>
+<p>Sur notre CI, nous sommes passés de <strong>8 minutes</strong> d’installation (npm) à <strong>2 minutes</strong> (Yarn) !</p>
+<h3 id="2-sécurité">2. Sécurité</h3>
+<p>Yarn vérifie l’intégrité de chaque package installé grâce aux checksums dans le yarn.lock :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#A6E22E">$</span><span style="color:#E6DB74"> yarn</span><span style="color:#E6DB74"> install</span></span>
+<span class="line"><span style="color:#F8F8F2">[1/4] 🔍  Resolving packages...</span></span>
+<span class="line"><span style="color:#F8F8F2">[2/4] 🚚  Fetching packages...</span></span>
+<span class="line"><span style="color:#F8F8F2">[3/4] 🔗  Linking dependencies...</span></span>
+<span class="line"><span style="color:#F8F8F2">[4/4] 🔨  Building fresh packages...</span></span>
+<span class="line"><span style="color:#A6E22E">✨</span><span style="color:#E6DB74"> Done</span><span style="color:#E6DB74"> in</span><span style="color:#E6DB74"> 2.45s.</span></span></code></pre>
+<p>Si un package a été modifié ou corrompu, Yarn le détecte immédiatement.</p>
+<h3 id="3-commandes-utiles">3. Commandes utiles</h3>
+<p>Yarn ajoute des commandes pratiques :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#88846F"># Voir pourquoi un package est installé</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> why</span><span style="color:#E6DB74"> lodash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F"># Mettre à jour interactivement</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> upgrade-interactive</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F"># Lister les packages obsolètes</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> outdated</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F"># Vérifier les licences</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> licenses</span><span style="color:#E6DB74"> list</span></span></code></pre>
+<h3 id="4-résolution-des-conflits">4. Résolution des conflits</h3>
+<p>Le fichier <code>yarn.lock</code> est conçu pour éviter les conflits git :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#88846F"># Structure claire et lisible</span></span>
+<span class="line"><span style="color:#E6DB74">"package@version"</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#E6DB74">  version "exact-version"</span></span>
+<span class="line"><span style="color:#E6DB74">  resolved "url"</span></span>
+<span class="line"><span style="color:#E6DB74">  integrity "checksum"</span></span>
+<span class="line"><span style="color:#F92672">  dependencies</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#E6DB74">    dep "version"</span></span></code></pre>
+<p>Les conflits de merge sont faciles à résoudre.</p>
+<h2 id="notre-expérience-chez-talend">Notre expérience chez Talend</h2>
+<p>La migration vers Yarn a été un des meilleurs choix techniques que nous ayons faits. Voici quelques chiffres concrets :</p>
+<ul>
+<li><strong>~15 packages</strong> dans notre monorepo</li>
+<li><strong>~2000 dépendances</strong> au total</li>
+<li><strong>Avant Yarn</strong> : 8 minutes d’installation, 4 GB de node_modules</li>
+<li><strong>Après Yarn</strong> : 2 minutes d’installation, 1.2 GB de node_modules</li>
+<li><strong>Gain de productivité</strong> : Immédiat et mesurable</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Yarn a apporté une véritable révolution dans l’écosystème JavaScript :</p>
+<ul>
+<li><strong>Déterminisme</strong> grâce au yarn.lock</li>
+<li><strong>Performance</strong> avec l’installation parallèle et le cache</li>
+<li><strong>Workspaces</strong> pour les monorepos</li>
+<li><strong>Sécurité</strong> avec la vérification d’intégrité</li>
+</ul>
+<p>Aujourd’hui, npm a rattrapé une partie de son retard (notamment avec npm 7+ qui supporte les workspaces), mais Yarn reste un choix solide, particulièrement pour les projets complexes et les monorepos.</p>
+<p>Si vous n’utilisez pas encore Yarn dans votre projet, je vous encourage vivement à l’essayer. Le gain en fiabilité et en productivité est réel et immédiat.</p>
+<p>Et vous, quelle est votre expérience avec Yarn ? Utilisez-vous les workspaces ? N’hésitez pas à partager en commentaire !</p>
+<hr>
+<p><strong>Pour aller plus loin :</strong></p>
+<ul>
+<li><a href="https://yarnpkg.com/">Documentation officielle Yarn</a></li>
+<li><a href="https://yarnpkg.com/features/workspaces">Yarn Workspaces</a></li>
+<li><a href="https://yarnpkg.com/getting-started/migration">Migrating from npm to Yarn</a></li>
+</ul>  </div> <footer class="post-footer mt-8 pt-6 border-t border-gray-200"> <div class="tags"> <span class="font-semibold">Tags:</span> <a href="/tags/Talend" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Talend</a><a href="/tags/Yarn" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Yarn</a><a href="/tags/JavaScript" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">JavaScript</a><a href="/tags/MonoRepo" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">MonoRepo</a> </div> </footer> </article>  </div> </main> </div> <!-- Footer --> <footer class="bg-black text-white py-12 border-t border-gray-800"> <div class="max-w-4xl mx-auto px-6 text-center"> <p class="text-gray-400">&copy; 2025 Jean-Michel FRANCOIS. All rights reserved.</p> </div> </footer> </body></html>

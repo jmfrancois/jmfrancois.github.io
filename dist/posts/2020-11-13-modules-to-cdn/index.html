@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Favicon & Icons --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/assets/ico/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/assets/ico/apple-icon-180x180.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/ico/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/ico/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/ico/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/ico/apple-icon-114x114.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/ico/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="144x144" href="/assets/ico/android-icon-144x144.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/ico/favicon-96x96.png"><link rel="icon" type="image/png" sizes="72x72" href="/assets/ico/android-icon-72x72.png"><link rel="icon" type="image/png" sizes="36x36" href="/assets/ico/android-icon-36x36.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/ico/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><!-- Meta Tags --><meta name="generator" content="Astro v5.16.6"><meta name="description" content="Jean-Michel FRANCOIS - Blog"><title>Du fork à la production : Comment module-to-cdn a révolutionné notre build time</title><link rel="stylesheet" href="/_astro/_slug_.BJBslw4O.css"></head> <body class="flex flex-col min-h-screen bg-white text-gray-900"> <!-- Top Navigation Bar --> <header class="sticky top-0 z-40 bg-white border-b border-gray-200"> <div class="px-8 py-4 flex items-center justify-between"> <div class="flex items-center gap-8"> <a href="/" class="text-2xl font-bold text-black hover:text-gray-700 transition">
+JM François
+</a> <nav class="flex items-center gap-6"> <a href="/" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Home
+</a> <a href="/categories" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Categories
+</a> <a href="/tags" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Tags
+</a> </nav> </div> <!-- Social Links --> <div class="flex items-center gap-5"> <!-- Twitter/X --> <a href="https://www.twitter.com/toutpt_fr" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="Twitter"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path> </svg> </a> <!-- LinkedIn --> <a href="http://www.linkedin.com/profile/view?id=42808053" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-700 transition" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.05-8.805 0-9.719h3.554v1.375c.427-.659 1.191-1.599 2.897-1.599 2.117 0 3.704 1.385 3.704 4.362v5.581zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.955.771-1.715 1.921-1.715 1.147 0 1.915.76 1.915 1.715 0 .953-.768 1.715-1.921 1.715zm1.946 11.597H3.392V9.588h3.891v10.864zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path> </svg> </a> <!-- Stack Overflow --> <a href="http://stackoverflow.com/users/622081/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition" aria-label="Stack Overflow"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.134v6.404h15.008zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852h10.438v-2.137H6.37v2.137zM7.17 13.995h9.282v-2.137H7.17v2.137zm8.945-4.979H6.248v2.137h9.867v-2.137z"></path> </svg> </a> <!-- GitHub (personal) --> <a href="https://github.com/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- GitHub (Talend) --> <a href="https://github.com/jmfrancois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub (Talend)"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- NPM --> <a href="https://www.npmjs.com/~toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-red-600 transition" aria-label="NPM"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.012-10.382h-3.456L12.04 19.17H5.13V5.323z"></path> </svg> </a> <!-- CV (document icon) --> <a href="https://www.doyoubuzz.com/jeanmichel-francois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition border-l border-gray-300 pl-5" aria-label="CV"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path> <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"></polyline> <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="2"></line> <line x1="9" y1="14" x2="15" y2="14" stroke="currentColor" stroke-width="2"></line> </svg> </a> </div> </div> </header> <!-- Sidebar --> <div class="flex flex-1"> <aside id="sidebar" class="w-64 bg-black text-white overflow-y-auto flex flex-col"> <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏠</span> <span>Home</span> </a> <a href="/categories" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">📁</span> <span>Categories</span> </a> <a href="/tags" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏷️</span> <span>Tags</span> </a> <!-- Side Projects Card --> <div class="mx-4 mb-6 p-4 bg-gray-900 rounded-lg border border-gray-800"> <h3 class="text-white font-bold mb-3 text-sm">Side Projects</h3> <div class="space-y-2"> <a href="https://toutpt.github.io/fuelcalc/index.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>fuelcalc</span> </a> <a href="https://toutpt.github.io/osm-transport-editor/index.html#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>osm transport editor</span> </a> </div> </div> <div class="p-6 border-t border-gray-800 text-gray-400 text-sm"> <p>&copy; 2025 JM François</p> </div> </aside> <!-- Main Content --> <main class="flex-1 w-full"> <div class="max-w-4xl mx-auto px-6 py-12">  <article class="post max-w-2xl mx-auto px-4 py-8"> <header class="post-header mb-8 border-b border-gray-200 pb-6"> <h1 class="text-4xl font-bold mb-4">Du fork à la production : Comment module-to-cdn a révolutionné notre build time</h1> <div class="post-meta text-gray-600"> <time datetime="2020-11-13T00:00:00.000Z"> November 13, 2020 </time> <div class="categories mt-2"> <span class="font-semibold">Categories:</span> <a href="/categories/fr" class="ml-2 text-blue-600 hover:text-blue-800">fr</a> </div> </div> </header> <div class="post-content prose prose-sm">  <p>La compilation de notre stack Talend/UI prenait des temps énormes et posait des défis majeurs. Découvrez comment le fork de <code>module-to-cdn</code> nous a permis de réduire le temps de build de 2 minutes à 10 secondes.</p>
+<h2 id="le-problème--une-stack-qui-néchelle-pas">Le problème : Une stack qui n’échelle pas</h2>
+<p>Chez Talend, nous avons investi massivement dans Talend/UI, notre design system et nos composants React réutilisables. Avec plus de 15 packages interconnectés, l’architecture est complexe et puissante, mais elle pose un problème majeur : <strong>la compilation de la stack complète prend un temps considérable</strong>.</p>
+<h3 id="les-défis-spécifiques">Les défis spécifiques</h3>
+<p><strong>1. Compilation lente et complexe</strong></p>
+<p>Compiler l’intégralité de la stack Talend/UI requiert des connaissances approfondies en tooling et webpack. Cela demande du temps, des ressources, et crée des goulots d’étranglement dans nos pipelines CI/CD.</p>
+<p><strong>2. Sass dans node_modules</strong></p>
+<p>Nos librairies contiennent du Sass qui se retrouve directement dans le <code>node_modules</code> des projets consommateurs. Cela signifie que chaque projet doit avoir sa propre copy et son propre processus de compilation pour le Sass.</p>
+<p><strong>3. Chaque changement est un breaking change</strong></p>
+<p>Quand nous mettions à jour une librairie, les projets consommateurs devaient recompiler entièrement. Pas de compilation incrémentale possible, pas de déploiement indépendant. Chaque fix dans <code>@talend/components</code> requérait une recompilation totale dans tous les projets consommateurs.</p>
+<p><strong>4. Évolution du design system et CI/CD</strong></p>
+<p>Notre design system progresse rapidement. L’équipe souhaitait pouvoir déployer des mises à jour en production <strong>via le CDN</strong> sans avoir besoin de recompiler les projets clients. Une véritable approche micro-frontend.</p>
+<h2 id="la-recherche-de-solution">La recherche de solution</h2>
+<p>C’est dans ce contexte que nous avons découvert <strong>module-to-cdn</strong>, un package brillant créé par l’équipe de POS Tai.</p>
+<h3 id="quest-ce-que-module-to-cdn">Qu’est-ce que module-to-cdn ?</h3>
+<p><code>module-to-cdn</code> est un utilitaire qui maintient un mapping entre des packages npm et leurs URLs CDN. Par exemple :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#88846F">// Avant</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> React </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> 'react'</span><span style="color:#F8F8F2">;  </span><span style="color:#88846F">// Bundle include dans le build</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> ReactDOM </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> 'react-dom'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> { Button } </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> '@talend/components'</span><span style="color:#F8F8F2">;  </span><span style="color:#88846F">// 150KB</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">// Après avec module-to-cdn</span></span>
+<span class="line"><span style="color:#88846F">// React, ReactDOM, @talend/components pointent sur le CDN</span></span>
+<span class="line"><span style="color:#88846F">// Taille du bundle : 10KB</span></span></code></pre>
+<h3 id="tentatives-de-contact-et-décision-de-forker">Tentatives de contact et décision de forker</h3>
+<p>J’ai essayé plusieurs fois de contacter l’auteur original pour discuter de nos besoins spécifiques pendant notre POC. Malheureusement, sans réponse. Après plusieurs essais, nous avons pris la décision pragmatique : <strong>forker le package pour l’adapter à nos besoins</strong>.</p>
+<p>Nous avons créé un fork officiel dans <a href="https://github.com/Talend/ui-scripts/pull/123">Talend/ui-scripts/pull/123</a> avec les améliorations nécessaires pour supporter l’architecture complexe de Talend/UI.</p>
+<h2 id="notre-architecture--umd--dynamic-cdn-webpack-plugin">Notre architecture : UMD + Dynamic CDN Webpack Plugin</h2>
+<p>L’architecture que nous avons mise en place repose sur deux piliers :</p>
+<h3 id="1-format-umd-pour-les-librairies">1. Format UMD pour les librairies</h3>
+<p>Nos librairies Talend/UI sont compilées en <strong>UMD (Universal Module Definition)</strong> :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#88846F"># Compilation de @talend/components en UMD</span></span>
+<span class="line"><span style="color:#A6E22E">yarn</span><span style="color:#E6DB74"> build:umd</span></span>
+<span class="line"><span style="color:#88846F"># Produit: talend-components.umd.js (distributables via CDN)</span></span></code></pre>
+<p>Pourquoi UMD ?</p>
+<ul>
+<li>Compatible avec tous les systèmes de module (AMD, CommonJS, ESM)</li>
+<li>Peut être inclus directement dans le HTML via <code>&#x3C;script></code></li>
+<li>Peut être utilisé par webpack avec <code>externals</code></li>
+</ul>
+<h3 id="2-dynamic-cdn-webpack-plugin">2. dynamic-cdn-webpack-plugin</h3>
+<p>Pour intégrer automatiquement le CDN dans le processus webpack, nous utilisons <code>dynamic-cdn-webpack-plugin</code> combiné à notre fork de <code>module-to-cdn</code>.</p>
+<p>Configuration webpack :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> DynamicCdnWebpackPlugin </span><span style="color:#F92672">=</span><span style="color:#A6E22E"> require</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'dynamic-cdn-webpack-plugin'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> moduleTocdn </span><span style="color:#F92672">=</span><span style="color:#A6E22E"> require</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'@talend/module-to-cdn'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">module</span><span style="color:#F8F8F2">.</span><span style="color:#66D9EF;font-style:italic">exports</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#88846F">  // ...</span></span>
+<span class="line"><span style="color:#F8F8F2">  plugins: [</span></span>
+<span class="line"><span style="color:#F92672">    new</span><span style="color:#A6E22E"> DynamicCdnWebpackPlugin</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">      modules: moduleTocdn,</span></span>
+<span class="line"><span style="color:#F8F8F2">      env: </span><span style="color:#E6DB74">'production'</span></span>
+<span class="line"><span style="color:#F8F8F2">    })</span></span>
+<span class="line"><span style="color:#F8F8F2">  ],</span></span>
+<span class="line"><span style="color:#F8F8F2">  externals: {</span></span>
+<span class="line"><span style="color:#E6DB74">    'react'</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">'React'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#E6DB74">    'react-dom'</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">'ReactDOM'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#E6DB74">    '@talend/components'</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">'TalendComponents'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#E6DB74">    '@talend/store'</span><span style="color:#F8F8F2">: </span><span style="color:#E6DB74">'TalendStore'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#88846F">    // ... toutes nos libs Talend</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span></code></pre>
+<p>Cela dit à webpack : “Ces packages ne sont pas à bundler, ils viennent du CDN”.</p>
+<h2 id="le-travail-dintégration">Le travail d’intégration</h2>
+<p>Pas mal de travail était nécessaire pour que tout fonctionne :</p>
+<h3 id="1-créer-le-mapping-cdn">1. Créer le mapping CDN</h3>
+<p>Il fallait maintenir à jour un mapping complet de toutes nos librairies avec leurs URLs CDN :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#66D9EF;font-style:italic">module</span><span style="color:#F8F8F2">.</span><span style="color:#66D9EF;font-style:italic">exports</span><span style="color:#F92672"> =</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  React: {</span></span>
+<span class="line"><span style="color:#F8F8F2">    name: </span><span style="color:#E6DB74">'react'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    var: </span><span style="color:#E6DB74">'React'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    url: </span><span style="color:#E6DB74">'https://cdn.talend.com/react/16.13.1/react.umd.production.min.js'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    version: </span><span style="color:#E6DB74">'16.13.1'</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#E6DB74">  'react-dom'</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#F8F8F2">    name: </span><span style="color:#E6DB74">'react-dom'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    var: </span><span style="color:#E6DB74">'ReactDOM'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    url: </span><span style="color:#E6DB74">'https://cdn.talend.com/react-dom/16.13.1/react-dom.umd.production.min.js'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    version: </span><span style="color:#E6DB74">'16.13.1'</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#E6DB74">  '@talend/components'</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#F8F8F2">    name: </span><span style="color:#E6DB74">'@talend/components'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    var: </span><span style="color:#E6DB74">'TalendComponents'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    url: </span><span style="color:#E6DB74">'https://cdn.talend.com/talend-components/2.15.0/talend-components.umd.min.js'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    version: </span><span style="color:#E6DB74">'2.15.0'</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#88846F">  // ... et toutes les autres libs</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span></code></pre>
+<h3 id="2-gérer-les-dépendances-circulaires">2. Gérer les dépendances circulaires</h3>
+<p>Nos librairies Talend ont des dépendances complexes. <code>@talend/components</code> dépend de <code>@talend/store</code>, qui dépend de Redux, etc.</p>
+<p>Il fallait s’assurer que dans le HTML, les scripts étaient chargés dans le bon ordre :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#F92672">script</span><span style="color:#A6E22E"> src</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"https://cdn.talend.com/react/16.13.1/react.umd.production.min.js"</span><span style="color:#F8F8F2">>&#x3C;/</span><span style="color:#F92672">script</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#F92672">script</span><span style="color:#A6E22E"> src</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"https://cdn.talend.com/redux/4.0.5/redux.umd.js"</span><span style="color:#F8F8F2">>&#x3C;/</span><span style="color:#F92672">script</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#F92672">script</span><span style="color:#A6E22E"> src</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"https://cdn.talend.com/react-redux/7.2.1/react-redux.umd.js"</span><span style="color:#F8F8F2">>&#x3C;/</span><span style="color:#F92672">script</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#F92672">script</span><span style="color:#A6E22E"> src</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"https://cdn.talend.com/talend-store/1.5.0/talend-store.umd.min.js"</span><span style="color:#F8F8F2">>&#x3C;/</span><span style="color:#F92672">script</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#F92672">script</span><span style="color:#A6E22E"> src</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"https://cdn.talend.com/talend-components/2.15.0/talend-components.umd.min.js"</span><span style="color:#F8F8F2">>&#x3C;/</span><span style="color:#F92672">script</span><span style="color:#F8F8F2">></span></span></code></pre>
+<h3 id="3-gestion-des-versions-et-compatibility">3. Gestion des versions et compatibility</h3>
+<p>Avec la stack externalisée, chaque version du CDN doit être compatible avec les versions d’autres packages. Nous avons mis en place une stratégie de versioning stricte.</p>
+<h3 id="4-tests-et-validation">4. Tests et validation</h3>
+<p>Avant de déployer, nous avons dû tester :</p>
+<ul>
+<li>Que les bundles UMD fonctionnent correctement</li>
+<li>Que webpack externalise vraiment les packages</li>
+<li>Que les dépendances sont chargées dans le bon ordre</li>
+<li>Que le fallback marche si le CDN n’est pas disponible</li>
+</ul>
+<h2 id="les-résultats--gains-spectaculaires">Les résultats : Gains spectaculaires</h2>
+<p>Après des semaines de travail, nous avons déployé cette infrastructure en production. Les résultats ont dépassé nos attentes.</p>
+<h3 id="1-temps-de-compilation-divisé-par-12">1. Temps de compilation divisé par 12</h3>
+<p><strong>Avant :</strong></p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$ yarn build</span></span>
+<span class="line"><span>// ... webpack build de toute la stack...</span></span>
+<span class="line"><span>Chunk {0} main.js: 2.4 MB</span></span>
+<span class="line"><span>Compilation time: 2 minutes 15 seconds</span></span></code></pre>
+<p><strong>Après :</strong></p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>$ yarn build</span></span>
+<span class="line"><span>// ... webpack build sans les packages externes...</span></span>
+<span class="line"><span>Chunk {0} main.js: 180 KB</span></span>
+<span class="line"><span>Compilation time: 10 seconds</span></span></code></pre>
+<h3 id="2-plus-de-heap-stack-memory-failures">2. Plus de heap stack memory failures</h3>
+<p>Webpack compilait tellement de code que nous recevions régulièrement des <code>JavaScript heap out of memory</code> errors. Avec la stack externalisée, ce problème a complètement disparu.</p>
+<p>Avant, nous devions augmenter la limite de heap :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F8F8F2">NODE_OPTIONS</span><span style="color:#F92672">=</span><span style="color:#E6DB74">"--max-old-space-size=4096"</span><span style="color:#A6E22E"> yarn</span><span style="color:#E6DB74"> build</span></span></code></pre>
+<p>Maintenant, le build marche sans configuration spéciale.</p>
+<h3 id="3-temps-daffichage-initial">3. Temps d’affichage initial</h3>
+<p>Pour les utilisateurs, le gain est également spectaculaire :</p>
+<p><strong>Avant (avec tout bundlé) :</strong></p>
+<ul>
+<li>Download du bundle : 2.4 MB → ~30 secondes</li>
+<li>Parse et compile : ~1 minute 30 secondes</li>
+<li>Total : ~2 minutes</li>
+</ul>
+<p><strong>Après (avec CDN) :</strong></p>
+<ul>
+<li>Download du bundle principal : 180 KB → ~0.5 secondes</li>
+<li>Download des librairies du CDN (en parallèle) : ~2 secondes (cached après première visite)</li>
+<li>Parse et compile : ~7 secondes</li>
+<li>Total : ~10 secondes</li>
+</ul>
+<p>Un gain d’un <strong>facteur 12</strong> !</p>
+<h3 id="4-déploiement-indépendant-du-design-system">4. Déploiement indépendant du design system</h3>
+<p>Notre équipe design system peut maintenant déployer des mises à jour vers le CDN sans que les projets consommateurs aient besoin de recompiler.</p>
+<p>Un simple changement de version dans le HTML et on bénéficie des nouvelles composants :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#88846F">&#x3C;!-- Avant : il fallait recompiler tout le projet --></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">&#x3C;!-- Après : juste changer la version du CDN --></span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#F92672">script</span><span style="color:#A6E22E"> src</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"https://cdn.talend.com/talend-components/2.16.0/talend-components.umd.min.js"</span><span style="color:#F8F8F2">>&#x3C;/</span><span style="color:#F92672">script</span><span style="color:#F8F8F2">></span></span></code></pre>
+<h2 id="architecture-finale">Architecture finale</h2>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>┌─────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│                     Projects                             │</span></span>
+<span class="line"><span>│  (React apps consommant Talend/UI)                      │</span></span>
+<span class="line"><span>└─────────────────┬───────────────────────────────────────┘</span></span>
+<span class="line"><span>                  │</span></span>
+<span class="line"><span>                  │ (via dynamic-cdn-webpack-plugin)</span></span>
+<span class="line"><span>                  │</span></span>
+<span class="line"><span>┌─────────────────▼───────────────────────────────────────┐</span></span>
+<span class="line"><span>│            Talend CDN                                    │</span></span>
+<span class="line"><span>│  ├── /react/16.13.1/react.umd.min.js                   │</span></span>
+<span class="line"><span>│  ├── /react-dom/16.13.1/react-dom.umd.min.js           │</span></span>
+<span class="line"><span>│  ├── /talend-components/2.16.0/talend-components.js    │</span></span>
+<span class="line"><span>│  ├── /talend-store/1.5.0/talend-store.umd.min.js       │</span></span>
+<span class="line"><span>│  └── ... (toutes les autres libs)                       │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────┘</span></span>
+<span class="line"><span>                  ▲</span></span>
+<span class="line"><span>                  │</span></span>
+<span class="line"><span>┌─────────────────┴───────────────────────────────────────┐</span></span>
+<span class="line"><span>│        Talend/UI Design System                          │</span></span>
+<span class="line"><span>│  Publie les UMD builds vers le CDN                      │</span></span>
+<span class="line"><span>│  Maintient module-to-cdn à jour                         │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────┘</span></span></code></pre>
+<h2 id="leçons-apprises">Leçons apprises</h2>
+<h3 id="1-limportance-du-fork">1. L’importance du fork</h3>
+<p>Parfois, forker un package est la bonne décision quand vous avez des besoins spécifiques. Ce n’est pas “mal” si vous le faites pour les bonnes raisons.</p>
+<h3 id="2-umd-est-vivant">2. UMD est vivant</h3>
+<p>Malgré les prédictions pessimistes, UMD reste extrêmement pertinent pour les CDN et les micro-frontends.</p>
+<h3 id="3-la-composition-plutôt-que-le-bundling">3. La composition plutôt que le bundling</h3>
+<p>Avec une architecture bien pensée, on peut construire des systèmes complexes en composant des modules plutôt qu’en les bundlant ensemble.</p>
+<h3 id="4-le-coût-de-la-complexité">4. Le coût de la complexité</h3>
+<p>Plus vos projets ont de dépendances, plus vous gagnez avec cette approche. Pour un petit projet, ça ne vaut pas le coup. Pour une entreprise avec des dizaines de projets, c’est transformationnel.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>La décision de forker <code>module-to-cdn</code> et d’implémenter une architecture CDN basée sur UMD a été l’une de nos meilleures décisions techniques.</p>
+<p>Les chiffres parlent d’eux-mêmes :</p>
+<ul>
+<li><strong>12x plus rapide</strong> pour la compilation</li>
+<li><strong>Zéro heap memory errors</strong></li>
+<li><strong>Déploiement indépendant</strong> du design system</li>
+<li><strong>Meilleure expérience utilisateur</strong></li>
+</ul>
+<p>Si vous travaillez dans une architecture monorepo complexe avec plusieurs applications consommant une suite de librairies communes, je vous encourage vivement à explorer cette approche.</p>
+<p>Et vous, comment gérez-vous vos dépendances partagées ? Avez-vous des expériences avec les micro-frontends à partager ?</p>
+<hr>
+<p><strong>Ressources utiles :</strong></p>
+<ul>
+<li><a href="https://github.com/Parimala-R/module-to-cdn">module-to-cdn (original)</a></li>
+<li><a href="https://github.com/Talend/ui-scripts/pull/123">Notre fork : Talend/ui-scripts/pull/123</a></li>
+<li><a href="https://github.com/mosesman/dynamic-cdn-webpack-plugin">dynamic-cdn-webpack-plugin</a></li>
+<li><a href="https://github.com/umdjs/umd">UMD (Universal Module Definition)</a></li>
+</ul>  </div> <footer class="post-footer mt-8 pt-6 border-t border-gray-200"> <div class="tags"> <span class="font-semibold">Tags:</span> <a href="/tags/Talend" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Talend</a><a href="/tags/JavaScript" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">JavaScript</a><a href="/tags/CDN" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">CDN</a><a href="/tags/UMD" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">UMD</a><a href="/tags/Webpack" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Webpack</a> </div> </footer> </article>  </div> </main> </div> <!-- Footer --> <footer class="bg-black text-white py-12 border-t border-gray-800"> <div class="max-w-4xl mx-auto px-6 text-center"> <p class="text-gray-400">&copy; 2025 Jean-Michel FRANCOIS. All rights reserved.</p> </div> </footer> </body></html>

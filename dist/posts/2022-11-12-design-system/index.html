@@ -1,0 +1,437 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Favicon & Icons --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/assets/ico/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/assets/ico/apple-icon-180x180.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/ico/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/ico/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/ico/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/ico/apple-icon-114x114.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/ico/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="144x144" href="/assets/ico/android-icon-144x144.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/ico/favicon-96x96.png"><link rel="icon" type="image/png" sizes="72x72" href="/assets/ico/android-icon-72x72.png"><link rel="icon" type="image/png" sizes="36x36" href="/assets/ico/android-icon-36x36.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/ico/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><!-- Meta Tags --><meta name="generator" content="Astro v5.16.6"><meta name="description" content="Jean-Michel FRANCOIS - Blog"><title>The Rise and Fall (and Rebuild) of Talend/UI: Lessons from a Design System Gone Wrong</title><link rel="stylesheet" href="/_astro/_slug_.BJBslw4O.css"></head> <body class="flex flex-col min-h-screen bg-white text-gray-900"> <!-- Top Navigation Bar --> <header class="sticky top-0 z-40 bg-white border-b border-gray-200"> <div class="px-8 py-4 flex items-center justify-between"> <div class="flex items-center gap-8"> <a href="/" class="text-2xl font-bold text-black hover:text-gray-700 transition">
+JM François
+</a> <nav class="flex items-center gap-6"> <a href="/" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Home
+</a> <a href="/categories" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Categories
+</a> <a href="/tags" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Tags
+</a> </nav> </div> <!-- Social Links --> <div class="flex items-center gap-5"> <!-- Twitter/X --> <a href="https://www.twitter.com/toutpt_fr" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="Twitter"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path> </svg> </a> <!-- LinkedIn --> <a href="http://www.linkedin.com/profile/view?id=42808053" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-700 transition" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.05-8.805 0-9.719h3.554v1.375c.427-.659 1.191-1.599 2.897-1.599 2.117 0 3.704 1.385 3.704 4.362v5.581zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.955.771-1.715 1.921-1.715 1.147 0 1.915.76 1.915 1.715 0 .953-.768 1.715-1.921 1.715zm1.946 11.597H3.392V9.588h3.891v10.864zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path> </svg> </a> <!-- Stack Overflow --> <a href="http://stackoverflow.com/users/622081/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition" aria-label="Stack Overflow"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.134v6.404h15.008zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852h10.438v-2.137H6.37v2.137zM7.17 13.995h9.282v-2.137H7.17v2.137zm8.945-4.979H6.248v2.137h9.867v-2.137z"></path> </svg> </a> <!-- GitHub (personal) --> <a href="https://github.com/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- GitHub (Talend) --> <a href="https://github.com/jmfrancois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub (Talend)"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- NPM --> <a href="https://www.npmjs.com/~toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-red-600 transition" aria-label="NPM"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.012-10.382h-3.456L12.04 19.17H5.13V5.323z"></path> </svg> </a> <!-- CV (document icon) --> <a href="https://www.doyoubuzz.com/jeanmichel-francois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition border-l border-gray-300 pl-5" aria-label="CV"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path> <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"></polyline> <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="2"></line> <line x1="9" y1="14" x2="15" y2="14" stroke="currentColor" stroke-width="2"></line> </svg> </a> </div> </div> </header> <!-- Sidebar --> <div class="flex flex-1"> <aside id="sidebar" class="w-64 bg-black text-white overflow-y-auto flex flex-col"> <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏠</span> <span>Home</span> </a> <a href="/categories" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">📁</span> <span>Categories</span> </a> <a href="/tags" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏷️</span> <span>Tags</span> </a> <!-- Side Projects Card --> <div class="mx-4 mb-6 p-4 bg-gray-900 rounded-lg border border-gray-800"> <h3 class="text-white font-bold mb-3 text-sm">Side Projects</h3> <div class="space-y-2"> <a href="https://toutpt.github.io/fuelcalc/index.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>fuelcalc</span> </a> <a href="https://toutpt.github.io/osm-transport-editor/index.html#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>osm transport editor</span> </a> </div> </div> <div class="p-6 border-t border-gray-800 text-gray-400 text-sm"> <p>&copy; 2025 JM François</p> </div> </aside> <!-- Main Content --> <main class="flex-1 w-full"> <div class="max-w-4xl mx-auto px-6 py-12">  <article class="post max-w-2xl mx-auto px-4 py-8"> <header class="post-header mb-8 border-b border-gray-200 pb-6"> <h1 class="text-4xl font-bold mb-4">The Rise and Fall (and Rebuild) of Talend/UI: Lessons from a Design System Gone Wrong</h1> <div class="post-meta text-gray-600"> <time datetime="2022-11-12T00:00:00.000Z"> November 12, 2022 </time> <div class="categories mt-2"> <span class="font-semibold">Categories:</span> <a href="/categories/en" class="ml-2 text-blue-600 hover:text-blue-800">en</a> </div> </div> </header> <div class="post-content prose prose-sm">  <p>Five years ago, Talend decided to build a design system. Codename: “Coral”. Public repository: Talend/UI. It was supposed to unify the experience across all products, eliminate inconsistencies, and make development faster.</p>
+<p>What happened instead was a cautionary tale about technology choices, adoption, and the cost of betting on unstable libraries. And somehow, I ended up owning the wreckage.</p>
+<h2 id="the-initial-excitement-and-my-skepticism">The Initial Excitement (and My Skepticism)</h2>
+<p>When the design system initiative was announced, I was… conflicted.</p>
+<p>On one hand: <strong>YES.</strong> We needed consistency. Every product at Talend looked slightly different. The user experience was a mess. A centralized design system sounded perfect.</p>
+<p>On the other hand: <strong>ARE YOU KIDDING?</strong> We already had Bootstrap. We had CSS. Why would we recreate a button?</p>
+<p>I was <strong>blind</strong>. Willfully blind.</p>
+<h2 id="the-bootstrap-problem-nobody-talks-about">The Bootstrap Problem Nobody Talks About</h2>
+<p>This is what I didn’t understand at the time: <strong>Bootstrap was killing us.</strong></p>
+<p>It’s not that Bootstrap is bad. Bootstrap 3 was great when it came out in 2012. But by 2018, it had become a technology graveyard.</p>
+<p><strong>The problems we faced:</strong></p>
+<ol>
+<li>
+<p><strong>Global CSS is unmaintainable</strong> : Every Talend product had Bootstrap. But every product had also added its own CSS overrides. Tons of them. Trying to upgrade Bootstrap meant auditing 50+ CSS files to see what would break.</p>
+</li>
+<li>
+<p><strong>Customization is a nightmare</strong> : Want to change the button color globally? Good luck. Bootstrap’s variables were top-level, so you’d have to recompile everything. And if someone had added a CSS rule targeting <code>.btn</code>, recompiling wouldn’t help.</p>
+</li>
+<li>
+<p><strong>No real versioning</strong> : Bootstrap was a global dependency. If Product A needed Button v1 and Product B needed Button v2, you were out of luck. They shared the same styles.</p>
+</li>
+<li>
+<p><strong>CSS specificity wars</strong> : Each product tried to override Bootstrap in different ways. Some used <code>!important</code>. Some added wrapper classes. Some added inline styles. It was chaos.</p>
+</li>
+<li>
+<p><strong>Consistency was impossible</strong> : The button in Product A looked different from the button in Product B. Not intentionally. Just because each team had tweaked Bootstrap differently.</p>
+</li>
+</ol>
+<p>I remember spending an entire day trying to figure out why a button in one product had different padding. The answer? Someone had added a <code>.btn { padding: 12px !important; }</code> in one of six CSS files. Finding it took forever.</p>
+<p><strong>This is what Bootstrap looks like at scale.</strong> It’s not the framework’s fault. It’s the inevitable result of treating global styles as a free good.</p>
+<h2 id="the-designer-problem-adoption-from-the-design-side">The Designer Problem: Adoption from the Design Side</h2>
+<p>Here’s something nobody talks about in design system articles: <strong>designers have the exact same adoption problem as developers.</strong></p>
+<p>When the design system team proposed Coral, they were excited. They had created beautiful, modern, accessible components in Figma. They had done extensive user research. They had created design guidelines. Everything was perfect.</p>
+<p>Then they tried to get designers from other products to use the design system.</p>
+<p><strong>What happened?</strong> Nothing. Or worse, adoption was slower than molasses.</p>
+<p><strong>Why?</strong></p>
+<ol>
+<li>
+<p><strong>Senior designers resisted change</strong> : Some of the most experienced designers at Talend had built their own design patterns over years. They had a vision. Asking them to use someone else’s components felt like losing creative control. “This button is nice, but our product needed something different,” they’d say.</p>
+</li>
+<li>
+<p><strong>“But our users expect it to look this way”</strong> : Just like developers with Bootstrap, designers had trained their users on specific UI patterns. A new design system meant re-educating users. That’s scary.</p>
+</li>
+<li>
+<p><strong>Design tokens were abstract</strong> : We kept talking about “design tokens” and “system thinking.” But to a designer working on a specific product, it felt like corporate constraints. “I need this color to be #FF5733, not your #FF5722.”</p>
+</li>
+<li>
+<p><strong>No single source of truth between design and code</strong> : Designers would create in Figma. Developers would implement in React. They’d drift. Designers would complain. Developers would say “that’s not what you designed.” Both were right.</p>
+</li>
+<li>
+<p><strong>Lack of designer involvement</strong> : The first Coral team was mostly developers. There wasn’t enough designer voice in the early decisions. This led to beautiful components that didn’t match how designers actually wanted to work.</p>
+</li>
+<li>
+<p><strong>Customization felt impossible</strong> : A senior designer at one of our biggest products asked: “Can I use these components but customize the spacing?” The answer was basically “no.” So they didn’t use it.</p>
+</li>
+</ol>
+<p>The lesson? <strong>Design systems fail not because of code. They fail because people (both designers and developers) feel constrained.</strong></p>
+<p>A good design system needs:</p>
+<ul>
+<li><strong>Flexibility, not rigidity</strong> : Allow customization at the edges</li>
+<li><strong>Designer buy-in, not just developer buy-in</strong> : Involve senior designers from day one</li>
+<li><strong>Clear documentation of the “why”</strong> : Not just rules, but reasoning</li>
+<li><strong>Opt-in adoption, not mandate</strong> : Let teams choose to switch, don’t force them</li>
+<li><strong>Regular user research</strong> : Talk to both designers and developers using the system</li>
+</ul>
+<p>What I should have done: involved senior designers as co-architects, not just stakeholders. Their resistance wasn’t obstinacy. It was expertise. They saw problems the younger team didn’t.</p>
+<h2 id="design-tokens-the-secret-weapon">Design Tokens: The Secret Weapon</h2>
+<p>Here’s the thing that actually works: <strong>Design Tokens.</strong></p>
+<p>Design tokens are the single biggest win of the Coral project. They’re understated, boring, but incredibly powerful.</p>
+<p>A design token is simply: <strong>a named value representing a design decision.</strong></p>
+<p>Instead of:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#88846F">/* BAD: Magic colors scattered everywhere */</span></span>
+<span class="line"><span style="color:#F92672">button</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  background-color</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">#007BFF</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  color</span><span style="color:#F8F8F2">: </span><span style="color:#66D9EF">white</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  padding</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">10</span><span style="color:#F92672">px</span><span style="color:#AE81FF"> 20</span><span style="color:#F92672">px</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  border-radius</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">4</span><span style="color:#F92672">px</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6E22E">.button-danger</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  background-color</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">#DC3545</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6E22E">.button-success</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  background-color</span><span style="color:#F8F8F2">: </span><span style="color:#AE81FF">#28A745</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span></code></pre>
+<p>You have:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  "color"</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "primary"</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">      "value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"#007BFF"</span></span>
+<span class="line"><span style="color:#F8F8F2">    },</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "danger"</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">      "value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"#DC3545"</span></span>
+<span class="line"><span style="color:#F8F8F2">    },</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "success"</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">      "value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"#28A745"</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  "spacing"</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "xs"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"4px"</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "sm"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"8px"</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "md"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"12px"</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "lg"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"16px"</span><span style="color:#F8F8F2"> }</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span></code></pre>
+<p>Then your component becomes:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> tokens </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> '@talend/tokens'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> buttonStyles </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  backgroundColor: tokens.color.primary.value,</span></span>
+<span class="line"><span style="color:#F8F8F2">  color: </span><span style="color:#E6DB74">'#FFF'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  padding: </span><span style="color:#E6DB74">`</span><span style="color:#F92672">${</span><span style="color:#F8F8F2">tokens.spacing.md.value</span><span style="color:#F92672">}</span><span style="color:#F92672"> ${</span><span style="color:#F8F8F2">tokens.spacing.lg.value</span><span style="color:#F92672">}</span><span style="color:#E6DB74">`</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  borderRadius: tokens.spacing.xs.value,</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span></code></pre>
+<p><strong>Why is this so powerful?</strong></p>
+<h3 id="1-design-and-code-speak-the-same-language">1. Design and Code Speak the Same Language</h3>
+<p>Designers work with the same token names as developers:</p>
+<p><strong>In Figma:</strong></p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Fill: color/primary</span></span>
+<span class="line"><span>Padding: spacing/lg</span></span></code></pre>
+<p><strong>In Code:</strong></p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F8F8F2">backgroundColor: tokens.color.primary.value</span></span>
+<span class="line"><span style="color:#F8F8F2">padding: tokens.spacing.lg.value</span></span></code></pre>
+<p>No translation layer. No confusion. Designers specify “color/primary” and developers use “color/primary.”</p>
+<h3 id="2-theming-becomes-trivial">2. Theming Becomes Trivial</h3>
+<p>Want a dark mode? Create a new token file:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#88846F">// tokens-light.json</span></span>
+<span class="line"><span style="color:#F8F8F2">{ </span><span style="color:#66D9EF;font-style:italic">"color"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"primary"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"#007BFF"</span><span style="color:#F8F8F2"> } }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">// tokens-dark.json</span></span>
+<span class="line"><span style="color:#F8F8F2">{ </span><span style="color:#66D9EF;font-style:italic">"color"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"primary"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"#0099FF"</span><span style="color:#F8F8F2"> } }</span></span></code></pre>
+<p>Then switch:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> tokens </span><span style="color:#F92672">from</span><span style="color:#F8F8F2"> process.env.THEME === </span><span style="color:#E6DB74">'dark'</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#F92672">  ?</span><span style="color:#E6DB74"> '@talend/tokens-dark'</span></span>
+<span class="line"><span style="color:#F92672">  :</span><span style="color:#E6DB74"> '@talend/tokens-light'</span><span style="color:#F8F8F2">;</span></span></code></pre>
+<p>No component code changes. At all.</p>
+<h3 id="3-global-updates-become-real">3. Global Updates Become Real</h3>
+<p>When your CEO says “change all buttons to red,” instead of:</p>
+<ol>
+<li>Edit Figma (10 components)</li>
+<li>Alert all designers (email)</li>
+<li>Developers update each component (5 files)</li>
+<li>Test 20 products (days)</li>
+<li>Deploy (days)</li>
+</ol>
+<p>You do:</p>
+<ol>
+<li>Change one token file: <code>color.primary: #FF0000</code></li>
+<li>Deploy token package</li>
+<li>All products automatically use the new color</li>
+</ol>
+<h3 id="4-maintainability-explodes">4. Maintainability Explodes</h3>
+<p>With tokens, the source of truth is <strong>one file per category</strong>:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>tokens/</span></span>
+<span class="line"><span>├── color.json</span></span>
+<span class="line"><span>├── spacing.json</span></span>
+<span class="line"><span>├── typography.json</span></span>
+<span class="line"><span>├── shadow.json</span></span>
+<span class="line"><span>└── border-radius.json</span></span></code></pre>
+<p>Not scattered through 100 CSS files. Not duplicated. Not magical.</p>
+<h3 id="5-scalability-for-multiple-products">5. Scalability for Multiple Products</h3>
+<p>At Talend, we have 10+ products. Before tokens:</p>
+<ul>
+<li>Product A uses <code>--color-primary: #007BFF</code></li>
+<li>Product B uses <code>--primary-color: #007BFF</code></li>
+<li>Product C uses <code>primaryColor = 0x007BFF</code></li>
+</ul>
+<p>All the same color. Three different names. Impossible to sync.</p>
+<p>With tokens, <strong>all products use the same token file.</strong> Done.</p>
+<h3 id="6-tokens-enable-micro-customization">6. Tokens Enable Micro-Customization</h3>
+<p>A product wants to use your design system but needs slightly different spacing? Instead of forking the entire system:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  "extends"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"@talend/tokens"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">  "spacing"</span><span style="color:#F8F8F2">: {</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">    "md"</span><span style="color:#F8F8F2">: { </span><span style="color:#66D9EF;font-style:italic">"value"</span><span style="color:#F8F8F2">: </span><span style="color:#CFCFC2">"14px"</span><span style="color:#F8F8F2"> }  </span><span style="color:#88846F">// Override just this</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span></code></pre>
+<p>Clean. Simple. Mergeable.</p>
+<h3 id="7-design-token-tools-exist-now">7. Design Token Tools Exist Now</h3>
+<p>In 2024, there are amazing tools for managing tokens:</p>
+<ul>
+<li><strong>Figma Tokens</strong> : Design tokens directly in Figma, sync to code</li>
+<li><strong>Tokens Studio</strong> : Token management with version control</li>
+<li><strong>Style Dictionary</strong> : Transform tokens to any format (CSS, JS, JSON, etc.)</li>
+<li><strong>Specify</strong> : Cloud-based token management</li>
+</ul>
+<p>We could have used these from day one. We didn’t. Mistake.</p>
+<h2 id="how-design-tokens-should-have-worked-at-coral">How Design Tokens Should Have Worked at Coral</h2>
+<p>Here’s what I’d do if I could rewind:</p>
+<p><strong>Year 1:</strong></p>
+<ol>
+<li>Create tokens file: colors, spacing, typography, shadows</li>
+<li>Publish as a package: <code>@talend/tokens</code></li>
+<li>Use Figma Tokens plugin to keep Figma and JSON in sync</li>
+<li>Designers and developers use the same token names</li>
+<li>Zero components yet. Just tokens.</li>
+</ol>
+<p><strong>Year 2:</strong></p>
+<ol>
+<li>Build first 5 components using the tokens</li>
+<li>Token file becomes the single source of truth</li>
+<li>Any product can customize by extending the tokens</li>
+<li>Publish both light and dark token sets</li>
+</ol>
+<p><strong>Year 3:</strong></p>
+<ol>
+<li>Add more components</li>
+<li>Token system is stable and proven</li>
+<li>Adoption happens naturally because tokens work</li>
+</ol>
+<p>What actually happened:</p>
+<p><strong>Year 1:</strong></p>
+<ul>
+<li>Build 50 components immediately</li>
+<li>Hard-code colors everywhere</li>
+<li>Designers ignore the token layer</li>
+<li>Developers confused about what to override</li>
+</ul>
+<p><strong>Year 2:</strong></p>
+<ul>
+<li>Try to retrofit tokens into existing components</li>
+<li>It’s messy. It’s complicated.</li>
+<li>Nobody agrees on token names</li>
+<li>Adoption is still low</li>
+</ul>
+<p>Tokens should have been the foundation. Everything else builds on top.</p>
+<h2 id="the-token-lesson">The Token Lesson</h2>
+<p>Here’s the real insight: <strong>Design systems are really about creating a shared vocabulary.</strong></p>
+<p>Design tokens are that vocabulary. They’re boring. They’re simple. They’re not exciting.</p>
+<p>But they work.</p>
+<p>Senior designers didn’t resist tokens. They resisted 50 pre-built components they didn’t choose. They resisted losing creative control.</p>
+<p>But tokens? Tokens let designers and developers collaborate. They make theming easy. They make updates global.</p>
+<p>If Coral had been “design tokens + whatever components you need,” it would have been adopted immediately.</p>
+<p>Instead, it was “here are 50 components, use them all or nothing.”</p>
+<p>Big difference.</p>
+<h2 id="enter-coral-the-design-system">Enter Coral: The Design System</h2>
+<p>So the design system team proposed a solution. Their proposal:</p>
+<ul>
+<li><strong>TypeScript</strong> - Good, type safety for components</li>
+<li><strong>Styled Components</strong> - For scoped CSS</li>
+<li><strong>React Aria</strong> - For accessibility (but in alpha)</li>
+<li><strong>React</strong> - For the component framework</li>
+</ul>
+<p>As an architect, I was… hesitant.</p>
+<p>Not because the tech was bad. But because:</p>
+<ol>
+<li><strong>React Aria was in alpha</strong> : We were betting on a library that wasn’t stable</li>
+<li><strong>Styled Components adds bundle size</strong> : Shipping a CSS-in-JS library with every component</li>
+<li><strong>Uncontrolled patterns only</strong> : The first versions only supported uncontrolled components (<code>&#x3C;input defaultValue="..." /></code>). React best practices call for controlled components (<code>&#x3C;input value={...} onChange={...} /></code>).</li>
+<li><strong>Button size was different</strong> : The new design system button was a different size than the Bootstrap button. Good design, sure. But <strong>adoption suicide.</strong></li>
+</ol>
+<p>But you know what? The team had conviction. They were excited. They had a vision. And that matters.</p>
+<p>So we got on board. We built the infrastructure. We created a CDN for distribution (remember the Yarn article? That was part of this effort). We committed to the push.</p>
+<h2 id="two-years-of-not-much">Two Years of… Not Much</h2>
+<p>What happened next was frustrating.</p>
+<p>The design system team spent two years building components, refining APIs, and pushing for adoption.</p>
+<p>The adoption… didn’t happen.</p>
+<p><strong>Why?</strong></p>
+<ol>
+<li>
+<p><strong>The button looked different</strong> : Product teams had trained their users on the current button. Switching meant a breaking change to the user experience. “Is the button still clickable?” customers would ask. Silly? Yes. Real? Also yes.</p>
+</li>
+<li>
+<p><strong>Uncontrolled pattern limitation</strong> : Developers wanted to write:</p>
+</li>
+</ol>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> [value, setValue] </span><span style="color:#F92672">=</span><span style="color:#A6E22E"> useState</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">''</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#66D9EF;font-style:italic">Input</span><span style="color:#A6E22E"> value</span><span style="color:#F92672">={</span><span style="color:#F8F8F2">value</span><span style="color:#F92672">}</span><span style="color:#A6E22E"> onChange</span><span style="color:#F92672">={</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">e</span><span style="color:#F8F8F2">) </span><span style="color:#66D9EF;font-style:italic">=></span><span style="color:#A6E22E"> setValue</span><span style="color:#F8F8F2">(e.target.value)</span><span style="color:#F92672">}</span><span style="color:#F8F8F2"> /></span></span></code></pre>
+<p>But Coral only offered:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#66D9EF;font-style:italic">Input</span><span style="color:#A6E22E"> defaultValue</span><span style="color:#F92672">=</span><span style="color:#E6DB74">''</span><span style="color:#F8F8F2"> /></span></span></code></pre>
+<p>Uncontrolled components are simpler but less flexible. Most React developers had moved to controlled components because they’re more powerful.</p>
+<ol start="3">
+<li>
+<p><strong>React Aria concerns</strong> : React Aria was (and still is) a heavy library. Developers worried about bundle size. They worried about stability. The accessibility was great, but at what cost?</p>
+</li>
+<li>
+<p><strong>The design system looked… corporate</strong> : And that’s fine! But some teams wanted customization that Coral’s strict design didn’t allow.</p>
+</li>
+</ol>
+<p>So most teams continued using Bootstrap. Some started the migration. Many created workarounds.</p>
+<p>The design system existed, but as a <strong>library without adoption</strong>. A solution without a problem.</p>
+<h2 id="the-crisis-the-entire-team-left">The Crisis: The Entire Team Left</h2>
+<p>Then came 2024. The entire design system team left Talend.</p>
+<p>All of them. Gone.</p>
+<p>And guess who became the owner of Talend/UI?</p>
+<p>Me.</p>
+<p>I inherited:</p>
+<ul>
+<li>A React component library using styled-components and React Aria</li>
+<li>A build infrastructure worth maintaining</li>
+<li>Zero dedicated resources</li>
+<li>Hundreds of thousands of lines of code</li>
+</ul>
+<p>Oh, and <strong>a legacy of low adoption.</strong></p>
+<h2 id="the-audit-what-do-we-actually-need">The Audit: What Do We Actually Need?</h2>
+<p>Once I owned the system, I had to ask hard questions:</p>
+<ol>
+<li>
+<p><strong>What’s actually being used?</strong> : By looking at npm download stats and internal metrics, I found that only 30% of the components were actively used. Some components had zero downloads.</p>
+</li>
+<li>
+<p><strong>What’s our real problem?</strong> : It wasn’t “lack of a design system.” It was “legacy Bootstrap is killing us, but we can’t all migrate together.”</p>
+</li>
+<li>
+<p><strong>What should the solution be?</strong> : A lightweight, stable, HTML-centric component library. Not another Figma-to-code pipeline. Just components that work.</p>
+</li>
+</ol>
+<h2 id="the-realization-ui-libraries-are-unstable">The Realization: UI Libraries Are Unstable</h2>
+<p>This is the biggest lesson I learned:</p>
+<p><strong>You should not build products on top of unstable UI libraries.</strong></p>
+<p>Here’s why:</p>
+<ol>
+<li>
+<p><strong>Libraries evolve, your code doesn’t</strong> : React Aria changes its API. Styled-components changes how it handles SSR. Your code has to adapt or break.</p>
+</li>
+<li>
+<p><strong>Dependencies become liabilities</strong> : React Aria depends on 5 other libraries. Styled-components depends on 3. If any of those breaks, your design system breaks. And every product depending on your design system breaks.</p>
+</li>
+<li>
+<p><strong>Bundle size compounds</strong> : You add React Aria (+30KB). You add styled-components (+15KB). You add date-picker library (+40KB). Suddenly your button component is 85KB.</p>
+</li>
+<li>
+<p><strong>Maintenance burden grows</strong> : When React Aria releases a breaking change, you have to update it. When styled-components fixes a bug, you need to test it. You become a coordinator, not a builder.</p>
+</li>
+<li>
+<p><strong>You lose control</strong> : The library maintainers own your component behavior. If they decide to deprecate something, you have to follow.</p>
+</li>
+</ol>
+<h2 id="the-new-direction-own-the-html">The New Direction: Own the HTML</h2>
+<p>So here’s what I’m doing now:</p>
+<p><strong>Remove React Aria. Remove styled-components. Use native HTML.</strong></p>
+<p>Instead:</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#88846F">// Old approach (Coral v1)</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> { Button } </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> '@talend/components'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> styled </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> 'styled-components'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">export</span><span style="color:#66D9EF;font-style:italic"> function</span><span style="color:#A6E22E"> MyButton</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F92672">  return</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#A6E22E;text-decoration:underline">Button</span><span> </span><span style="color:#A6E22E;text-decoration:underline">variant</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"primary"</span><span style="color:#F8F8F2"> />;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">// New approach (Coral v2)</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> { Button } </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> '@talend/components'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F92672">export</span><span style="color:#66D9EF;font-style:italic"> function</span><span style="color:#A6E22E"> MyButton</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F92672">  return</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#A6E22E;text-decoration:underline">Button</span><span> </span><span style="color:#A6E22E;text-decoration:underline">className</span><span style="color:#F8F8F2">=</span><span style="color:#E6DB74">"primary"</span><span style="color:#F8F8F2"> />;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span></code></pre>
+<p>The new components are:</p>
+<ul>
+<li><strong>TypeScript for type safety</strong> - Good</li>
+<li><strong>CSS Modules for scoping</strong> - Simple and stable</li>
+<li><strong>Plain React for interactivity</strong> - No synthetic complications</li>
+<li><strong>HTML semantics first</strong> - <code>&#x3C;button></code>, <code>&#x3C;input></code>, <code>&#x3C;form></code>, etc.</li>
+<li><strong>Optional: Radix UI or Headless UI for the really complex stuff</strong> - But only when we REALLY need it</li>
+</ul>
+<p><strong>Why this works:</strong></p>
+<ol>
+<li><strong>HTML is stable</strong> : The <code>&#x3C;button></code> element will work the same way in 10 years</li>
+<li><strong>CSS Modules are simple</strong> : No black magic, just CSS with local scope</li>
+<li><strong>Less dependencies</strong> : Fewer things can break</li>
+<li><strong>Smaller bundle</strong> : We’re not shipping extra libraries</li>
+<li><strong>Easy to maintain</strong> : You can see exactly what the button does by reading the code</li>
+<li><strong>Developer friendly</strong> : React developers understand <code>&#x3C;button></code> immediately</li>
+</ol>
+<h2 id="the-migration-plan">The Migration Plan</h2>
+<p>Now I’m planning a migration from Coral v1 (styled-components + React Aria) to Coral v2 (TypeScript + CSS Modules + HTML).</p>
+<p>Here’s my strategy:</p>
+<ol>
+<li><strong>Start with the most-used components</strong> : Button, Input, Select, Modal</li>
+<li><strong>Build v2 alongside v1</strong> : No breaking changes yet</li>
+<li><strong>Migrate product teams gradually</strong> : They choose when to switch</li>
+<li><strong>Deprecate v1 slowly</strong> : Give teams time to adapt</li>
+<li><strong>Document the hell out of it</strong> : Make migration easy</li>
+</ol>
+<p>This will take time. But it’s the right approach.</p>
+<h2 id="the-lessons">The Lessons</h2>
+<p>Here’s what I learned from this entire journey:</p>
+<h3 id="1-bootstrap-isnt-the-problem-global-css-is">1. Bootstrap isn’t the problem; global CSS is</h3>
+<p>The mistake wasn’t using Bootstrap. The mistake was using global CSS at scale. Any framework would have the same problem.</p>
+<h3 id="2-dont-bet-on-alpha-libraries-for-production">2. Don’t bet on alpha libraries for production</h3>
+<p>React Aria is great. But building a design system on an alpha library was risky. We should have waited for stability.</p>
+<h3 id="3-adoption-is-harder-than-tech">3. Adoption is harder than tech</h3>
+<p>The best design system in the world won’t be adopted if it breaks the user experience. A 30% larger button is not a “design improvement.” It’s a breaking change.</p>
+<h3 id="4-uncontrolled-patterns-are-a-limiting-pattern">4. Uncontrolled patterns are a limiting pattern</h3>
+<p>Controlled components are the React default for good reasons. Building a design system that doesn’t support them is a losing bet.</p>
+<h3 id="5-bundle-size-matters">5. Bundle size matters</h3>
+<p>Each library adds cost. styled-components + React Aria sounds like “just two libraries.” But each pulls in more dependencies. Before you know it, your button is 100KB.</p>
+<h3 id="6-fewer-dependencies--less-maintenance">6. Fewer dependencies = less maintenance</h3>
+<p>This is the big one. <strong>UI libraries are not stable enough to be used in products. You should build your own and own the entire HTML rendering.</strong></p>
+<p>Use a library when you REALLY need one. Not because it sounds cool or makes the code “cleaner.”</p>
+<p>For Talend/UI v2, I’m building 95% in-house HTML. The remaining 5% will use Radix UI or Headless UI for extremely complex components (like the autocomplete with virtualization).</p>
+<p>But the button? That’s ours. The input? Ours. The modal? Ours.</p>
+<p>We own the HTML. We own the behavior. We own the future.</p>
+<h2 id="what-id-do-differently">What I’d Do Differently</h2>
+<p>If I could go back in time and advise the 2018 design system team:</p>
+<ol>
+<li><strong>Start smaller</strong> : One product, one button, solve the real problem</li>
+<li><strong>Own the HTML</strong> : Build components with plain React + CSS Modules from day one</li>
+<li><strong>Focus on adoption</strong> : Make the new button exactly match the old one initially, then iterate</li>
+<li><strong>Use libraries strategically</strong> : Only for things we can’t build (like date picker with virtualization)</li>
+<li><strong>Build incrementally</strong> : Bootstrap → Coral v0 (same look) → Coral v1 (new look with opt-in) → Full migration</li>
+<li><strong>Measure adoption</strong> : Make adoption easy to measure and a team KPI</li>
+</ol>
+<h2 id="where-we-are-now">Where We Are Now</h2>
+<p>It’s 2022. I’m maintaining Talend/UI.</p>
+<p>The new v2 is simpler, faster, and more maintainable.</p>
+<p>The bundle size will going down as adoption increase.</p>
+<p>The code is easier to read.</p>
+<p>And most importantly: <strong>we own our UI layer</strong>. That ownership is worth every day I spend rebuilding this.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Design systems are hard. Really hard.</p>
+<p>The hardest part isn’t the technology. It’s the adoption. It’s making decisions that balance innovation with backward compatibility. It’s owning the consequences of those decisions.</p>
+<p>Coral wasn’t a failure. It was a learning experience. And sometimes, the best design system is the one you build incrementally, starting small, with a deep commitment to owning your own code.</p>
+<p>If you’re building a design system, here’s my advice:</p>
+<ul>
+<li><strong>Own the HTML</strong>. Don’t bet on unstable libraries.</li>
+<li><strong>Focus on adoption</strong>. Tech is easy; people are hard.</li>
+<li><strong>Start small</strong>. One component, get it right, then scale.</li>
+<li><strong>Measure everything</strong>. You can’t improve what you don’t measure.</li>
+<li><strong>Be willing to rewrite</strong>. If it’s not working, the cost of starting over is usually less than the cost of pushing forward.</li>
+</ul>
+<p>And if you inherit a design system that’s struggling? It’s okay to rebuild. Sometimes the best path forward is to acknowledge that the previous approach didn’t work and start fresh with what you’ve learned.</p>
+<hr>
+<p><strong>Talend/UI Resources:</strong></p>
+<ul>
+<li><a href="https://github.com/Talend/ui">Talend/UI on GitHub</a></li>
+<li><a href="https://www.designsystems.com/case-study-airbnb/">Design System Lessons from Airbnb</a></li>
+<li><a href="https://www.designsystems.com/">Building a design system: the practical guide</a></li>
+</ul>  </div> <footer class="post-footer mt-8 pt-6 border-t border-gray-200"> <div class="tags"> <span class="font-semibold">Tags:</span> <a href="/tags/Talend" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Talend</a><a href="/tags/TypeScript" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">TypeScript</a><a href="/tags/Design System" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Design System</a><a href="/tags/React" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">React</a><a href="/tags/Architecture" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Architecture</a> </div> </footer> </article>  </div> </main> </div> <!-- Footer --> <footer class="bg-black text-white py-12 border-t border-gray-800"> <div class="max-w-4xl mx-auto px-6 text-center"> <p class="text-gray-400">&copy; 2025 Jean-Michel FRANCOIS. All rights reserved.</p> </div> </footer> </body></html>

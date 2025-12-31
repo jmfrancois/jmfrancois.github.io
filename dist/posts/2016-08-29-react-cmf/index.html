@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Favicon & Icons --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/assets/ico/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/assets/ico/apple-icon-180x180.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/ico/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/ico/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/ico/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/ico/apple-icon-114x114.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/ico/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="144x144" href="/assets/ico/android-icon-144x144.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/ico/favicon-96x96.png"><link rel="icon" type="image/png" sizes="72x72" href="/assets/ico/android-icon-72x72.png"><link rel="icon" type="image/png" sizes="36x36" href="/assets/ico/android-icon-36x36.png"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/ico/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><!-- Meta Tags --><meta name="generator" content="Astro v5.16.6"><meta name="description" content="Jean-Michel FRANCOIS - Blog"><title>React CMF : Un framework pour des applications React configurables</title><link rel="stylesheet" href="/_astro/_slug_.BJBslw4O.css"></head> <body class="flex flex-col min-h-screen bg-white text-gray-900"> <!-- Top Navigation Bar --> <header class="sticky top-0 z-40 bg-white border-b border-gray-200"> <div class="px-8 py-4 flex items-center justify-between"> <div class="flex items-center gap-8"> <a href="/" class="text-2xl font-bold text-black hover:text-gray-700 transition">
+JM François
+</a> <nav class="flex items-center gap-6"> <a href="/" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Home
+</a> <a href="/categories" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Categories
+</a> <a href="/tags" class="text-gray-700 hover:text-black transition font-medium text-sm">
+Tags
+</a> </nav> </div> <!-- Social Links --> <div class="flex items-center gap-5"> <!-- Twitter/X --> <a href="https://www.twitter.com/toutpt_fr" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="Twitter"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path> </svg> </a> <!-- LinkedIn --> <a href="http://www.linkedin.com/profile/view?id=42808053" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-blue-700 transition" aria-label="LinkedIn"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.249-.129.597-.129.946v5.421h-3.554s.05-8.805 0-9.719h3.554v1.375c.427-.659 1.191-1.599 2.897-1.599 2.117 0 3.704 1.385 3.704 4.362v5.581zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.955.771-1.715 1.921-1.715 1.147 0 1.915.76 1.915 1.715 0 .953-.768 1.715-1.921 1.715zm1.946 11.597H3.392V9.588h3.891v10.864zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path> </svg> </a> <!-- Stack Overflow --> <a href="http://stackoverflow.com/users/622081/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition" aria-label="Stack Overflow"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.134v6.404h15.008zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852h10.438v-2.137H6.37v2.137zM7.17 13.995h9.282v-2.137H7.17v2.137zm8.945-4.979H6.248v2.137h9.867v-2.137z"></path> </svg> </a> <!-- GitHub (personal) --> <a href="https://github.com/toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- GitHub (Talend) --> <a href="https://github.com/jmfrancois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition" aria-label="GitHub (Talend)"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> <!-- NPM --> <a href="https://www.npmjs.com/~toutpt" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-red-600 transition" aria-label="NPM"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.012-10.382h-3.456L12.04 19.17H5.13V5.323z"></path> </svg> </a> <!-- CV (document icon) --> <a href="https://www.doyoubuzz.com/jeanmichel-francois" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-black transition border-l border-gray-300 pl-5" aria-label="CV"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path> <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"></polyline> <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="2"></line> <line x1="9" y1="14" x2="15" y2="14" stroke="currentColor" stroke-width="2"></line> </svg> </a> </div> </div> </header> <!-- Sidebar --> <div class="flex flex-1"> <aside id="sidebar" class="w-64 bg-black text-white overflow-y-auto flex flex-col"> <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏠</span> <span>Home</span> </a> <a href="/categories" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">📁</span> <span>Categories</span> </a> <a href="/tags" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-800 transition font-medium"> <span class="text-lg">🏷️</span> <span>Tags</span> </a> <!-- Side Projects Card --> <div class="mx-4 mb-6 p-4 bg-gray-900 rounded-lg border border-gray-800"> <h3 class="text-white font-bold mb-3 text-sm">Side Projects</h3> <div class="space-y-2"> <a href="https://toutpt.github.io/fuelcalc/index.html" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>fuelcalc</span> </a> <a href="https://toutpt.github.io/osm-transport-editor/index.html#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition text-sm"> <span>→</span> <span>osm transport editor</span> </a> </div> </div> <div class="p-6 border-t border-gray-800 text-gray-400 text-sm"> <p>&copy; 2025 JM François</p> </div> </aside> <!-- Main Content --> <main class="flex-1 w-full"> <div class="max-w-4xl mx-auto px-6 py-12">  <article class="post max-w-2xl mx-auto px-4 py-8"> <header class="post-header mb-8 border-b border-gray-200 pb-6"> <h1 class="text-4xl font-bold mb-4">React CMF : Un framework pour des applications React configurables</h1> <div class="post-meta text-gray-600"> <time datetime="2016-08-29T00:00:00.000Z"> August 29, 2016 </time> <div class="categories mt-2"> <span class="font-semibold">Categories:</span> <a href="/categories/fr" class="ml-2 text-blue-600 hover:text-blue-800">fr</a> </div> </div> </header> <div class="post-content prose prose-sm">  <p>Mon premier défi : comment construire des applications React complètes de manière cohérente et configurable ? Après pas mal de discussion autours des differentes idées c’est devenu très clair: L’inversion de control IOC est la solutions.</p>
+<p>C’est ainsi qu’est né <strong>React CMF</strong> (Content Management Framework), un framework pour créer des applications React configurables.</p>
+<h2 id="le-problème">Le problème</h2>
+<p>Avec Talend UI, nous avions résolu le problème des composants réutilisables. Mais construire une application complète nécessite bien plus que des composants :</p>
+<ul>
+<li>Comment gérer le routing ?</li>
+<li>Comment organiser le state management avec Redux ?</li>
+<li>Comment permettre la configuration de l’interface ?</li>
+<li>Comment réutiliser des patterns d’application entre différents produits ?</li>
+</ul>
+<p>Chaque équipe réinventait sa propre architecture, avec ses propres conventions. Nous avions besoin d’un cadre commun, d’un framework qui dicte les bonnes pratiques tout en restant flexible.</p>
+<h2 id="pourquoi-cmf">Pourquoi “CMF” ?</h2>
+<p>Le nom peut surprendre au premier abord. CMF pour Content Management Framework ? Mais nous ne construisons pas WordPress !</p>
+<p>En réalité, la définition de Wikipedia d’un CMF colle parfaitement à notre besoin :</p>
+<blockquote>
+<p>“Un framework de gestion de contenu (CMF) est un système qui facilite l’utilisation de composants réutilisables ou de logiciels personnalisés pour gérer le contenu Web. Il partage des aspects d’un framework d’application Web et d’un système de gestion de contenu.”</p>
+</blockquote>
+<p>C’est exactement ce que nous voulions : un framework qui facilite la construction d’applications Web avec des composants réutilisables et configurables.</p>
+<h2 id="le-paradigme">Le paradigme</h2>
+<p>Avant de plonger dans les détails techniques, nous avons défini le paradigme fondamental de CMF :</p>
+<p><strong>Un utilisateur interagit avec une vue</strong> en utilisant sa souris et/ou son clavier, ce qui envoie des événements depuis un contenu. Cette interaction <strong>dispatch une action</strong>. Cette action peut changer la vue actuelle ou le contenu affiché.</p>
+<p>Ce paradigme peut paraître simple, mais il structure toute l’architecture du framework.</p>
+<h2 id="les-concepts-fondamentaux">Les concepts fondamentaux</h2>
+<p>CMF repose sur trois concepts principaux :</p>
+<h3 id="1-les-views-vues">1. Les Views (Vues)</h3>
+<p>Les vues sont des composants React spéciaux. Ce sont des composants de haut niveau avec une responsabilité claire : <strong>distribuer les props aux composants configurables</strong>.</p>
+<p>Les vues sont appelées par la bibliothèque d’abstraction UI depuis le routeur et connectées au store via les settings. Une vue peut être un composant pur (pure component).</p>
+<p>Une vue est composée de composants React qui peuvent récupérer leurs props de manière configurable.</p>
+<h3 id="2-les-actions">2. Les Actions</h3>
+<p>Les actions sont simplement des actions Redux. Rien de révolutionnaire ici, mais leur intégration dans le système de configuration est la clé.</p>
+<p>CMF fournit un registre d’action creators qui peuvent être référencés par configuration. Cela permet de changer le comportement de l’application sans toucher au code.</p>
+<h3 id="3-les-content-types-types-de-contenu">3. Les Content Types (Types de contenu)</h3>
+<p>Un content type définit des métadonnées sur un contenu. Par exemple, quand vous affichez une liste d’articles, vous dites que chaque élément de cette liste est un “article”, qui est un content type.</p>
+<p>CMF ajoute des métadonnées sur les content types :</p>
+<ul>
+<li><strong>title</strong> : Le titre du type de contenu</li>
+<li><strong>icon id</strong> : L’identifiant de l’icône à afficher</li>
+<li><strong>actions</strong> : Les actions disponibles (organisées par catégorie)</li>
+</ul>
+<p>Cette approche permet de configurer l’interface en fonction du type de contenu affiché.</p>
+<h2 id="le-registry--le-cœur-du-système">Le Registry : Le cœur du système</h2>
+<p>Au centre de CMF se trouve le <strong>Registry</strong> (registre). C’est une pièce maîtresse simple mais puissante : un système clé/objet avec préfixes pour stocker :</p>
+<ul>
+<li>Les <strong>action creators</strong> (fonctions)</li>
+<li>Les <strong>views</strong> (composants React)</li>
+<li>Les <strong>configurations</strong> de composants</li>
+</ul>
+<p>Le Registry permet de référencer des éléments par leur nom plutôt que par import direct. Cela ouvre la porte à la configuration :</p>
+<pre class="astro-code monokai" style="background-color:#272822;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#88846F">// Au lieu de</span></span>
+<span class="line"><span style="color:#F92672">import</span><span style="color:#F8F8F2"> MyView </span><span style="color:#F92672">from</span><span style="color:#E6DB74"> './MyView'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88846F">// On fait</span></span>
+<span class="line"><span style="color:#66D9EF;font-style:italic">const</span><span style="color:#F8F8F2"> MyView </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> registry.</span><span style="color:#A6E22E">getView</span><span style="color:#F8F8F2">(</span><span style="color:#E6DB74">'MyView'</span><span style="color:#F8F8F2">);</span></span></code></pre>
+<p>Cette indirection permet de changer les vues, les actions et les comportements via configuration, sans recompiler l’application.</p>
+<h2 id="larchitecture-en-pratique">L’architecture en pratique</h2>
+<p>Voici comment tout s’articule :</p>
+<ol>
+<li><strong>Le routeur</strong> appelle une vue basée sur l’URL</li>
+<li><strong>La vue</strong> récupère sa configuration depuis le Registry</li>
+<li><strong>Les composants</strong> de la vue reçoivent leurs props via cette configuration</li>
+<li><strong>Les actions</strong> sont dispatchées quand l’utilisateur interagit</li>
+<li><strong>Le state Redux</strong> est mis à jour</li>
+<li><strong>Les composants</strong> se re-rendent avec les nouvelles données</li>
+</ol>
+<p>Tout est configurable, tout est prévisible, tout est testable.</p>
+<h2 id="les-avantages">Les avantages</h2>
+<p>Cette architecture apporte plusieurs avantages majeurs :</p>
+<h3 id="configurabilité">Configurabilité</h3>
+<p>Les applications peuvent être configurées sans recompilation. Changez la configuration, rechargez la page, et voilà !</p>
+<h3 id="réutilisabilité">Réutilisabilité</h3>
+<p>Les patterns d’application sont réutilisables entre produits. Une fois qu’une vue est créée, elle peut être utilisée partout.</p>
+<h3 id="testabilité">Testabilité</h3>
+<p>Les composants purs, les actions Redux et la configuration séparée rendent le testing beaucoup plus simple.</p>
+<h3 id="maintenabilité">Maintenabilité</h3>
+<p>L’architecture claire et les conventions fortes facilitent la maintenance et l’onboarding de nouveaux développeurs.</p>
+<h3 id="extensibilité">Extensibilité</h3>
+<p>Ajouter de nouvelles fonctionnalités est simplifié grâce au système de registry.</p>
+<h2 id="les-défis">Les défis</h2>
+<p>Créer un tel framework n’a pas été sans défis :</p>
+<h3 id="la-courbe-dapprentissage">La courbe d’apprentissage</h3>
+<p>CMF introduit des concepts supplémentaires. Les développeurs doivent comprendre le Registry, la configuration, et les conventions.</p>
+<h3 id="léquilibre-flexibilitécontraintes">L’équilibre flexibilité/contraintes</h3>
+<p>Trop de contraintes et le framework devient limitant. Pas assez, et on perd les bénéfices de standardisation.</p>
+<h3 id="la-documentation">La documentation</h3>
+<p>Un framework sans documentation est inutile. Nous avons dû investir énormément dans la documentation et les exemples.</p>
+<h3 id="les-performances">Les performances</h3>
+<p>L’indirection du Registry a un coût. Nous avons dû optimiser pour que ce coût reste négligeable.</p>
+<h2 id="lévolution">L’évolution</h2>
+<p>CMF a évolué avec le temps :</p>
+<ul>
+<li>Support de React Router</li>
+<li>Intégration avec Redux Saga</li>
+<li>Amélioration du système de configuration</li>
+<li>Ajout de helpers et d’utilitaires</li>
+<li>Optimisation des performances</li>
+</ul>
+<p>Chaque itération nous a rapprochés d’un framework mature et stable.</p>
+<h2 id="leçons-apprises">Leçons apprises</h2>
+<p>Cette aventure nous a appris plusieurs choses :</p>
+<ol>
+<li>
+<p><strong>L’abstraction a un prix</strong> : Chaque couche d’abstraction ajoute de la complexité. Il faut que les bénéfices justifient ce coût.</p>
+</li>
+<li>
+<p><strong>La configuration est puissante</strong> : Pouvoir changer le comportement sans recompiler ouvre de nombreuses possibilités.</p>
+</li>
+<li>
+<p><strong>Les conventions libèrent</strong> : Avoir des conventions fortes réduit la charge cognitive et accélère le développement.</p>
+</li>
+<li>
+<p><strong>La documentation est critique</strong> : Un framework sans documentation est un framework mort.</p>
+</li>
+<li>
+<p><strong>L’itération est essentielle</strong> : Nous n’avons pas créé le framework parfait du premier coup. Chaque retour utilisateur nous a aidés à l’améliorer.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>React CMF est le chaînon manquant entre une bibliothèque de composants (Talend UI) et des applications complètes. Il fournit l’architecture, les patterns et les conventions nécessaires pour construire des applications React configurables et maintenables.</p>
+<p>Avec Talend UI pour les composants et React CMF pour l’architecture, nous avons créé un écosystème complet pour le développement d’applications React chez Talend.</p>
+<p>Le framework continue d’évoluer, porté par les besoins réels des équipes de développement et les retours d’expérience de son utilisation en production.</p>
+<p>Si vous construisez plusieurs applications React avec des patterns similaires, je vous encourage à explorer cette approche. La configurabilité et la réutilisabilité qu’elle apporte peuvent transformer votre façon de développer.</p>
+<hr>
+<p><strong>Liens utiles :</strong></p>
+<ul>
+<li><a href="https://github.com/Talend/ui/">Talend UI sur GitHub</a></li>
+<li><a href="https://github.com/Talend/ui/tree/master/packages/cmf">React CMF Documentation</a></li>
+<li><a href="https://redux.js.org/">Redux</a></li>
+<li><a href="https://reactrouter.com/">React Router</a></li>
+</ul>  </div> <footer class="post-footer mt-8 pt-6 border-t border-gray-200"> <div class="tags"> <span class="font-semibold">Tags:</span> <a href="/tags/Talend" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Talend</a><a href="/tags/React" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">React</a><a href="/tags/JavaScript" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">JavaScript</a><a href="/tags/Redux" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Redux</a><a href="/tags/Framework" class="ml-2 inline-block bg-gray-100 px-3 py-1 rounded text-sm text-blue-600 hover:text-blue-800 mr-2">Framework</a> </div> </footer> </article>  </div> </main> </div> <!-- Footer --> <footer class="bg-black text-white py-12 border-t border-gray-800"> <div class="max-w-4xl mx-auto px-6 text-center"> <p class="text-gray-400">&copy; 2025 Jean-Michel FRANCOIS. All rights reserved.</p> </div> </footer> </body></html>
