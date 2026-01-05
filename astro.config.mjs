@@ -10,6 +10,9 @@ export default defineConfig({
   outDir: "./docs",
   integrations: [mdx(), sitemap()],
   vite: {
+    ssr: {
+      noExternal: ["tailcss"],
+    },
     // @ts-ignore
     plugins: [tailwindcss()],
   },

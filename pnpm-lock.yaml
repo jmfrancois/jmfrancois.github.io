@@ -20,6 +20,9 @@ importers:
       reading-time:
         specifier: ^1.5.0
         version: 1.5.0
+      tailcss:
+        specifier: 0.0.2
+        version: 0.0.2
     devDependencies:
       '@tailwindcss/typography':
         specifier: ^0.5.19
@@ -1626,6 +1629,9 @@ packages:
     resolution: {integrity: sha512-VvrHQ+9uniE+Mvx3+C9IEe/lWasXCU0nXMY2kZeLrHNICuRiC8uMPyM14UEaMOFA5mhyQqEkB02VoQ16n3DLaw==}
     engines: {node: '>=16'}
     hasBin: true
+
+  tailcss@0.0.2:
+    resolution: {integrity: sha512-6nLaQ4mJfCNPIWjiOjipSHUEwpg9b0mctE9bnjeRuCblkfZsncQxzYHU7OREhghuKM/QYTpUnIivbtkjSq+1bA==}
 
   tailwindcss@4.1.18:
     resolution: {integrity: sha512-4+Z+0yiYyEtUVCScyfHCxOYP06L5Ne+JiHhY2IjR2KWMIWhJOYZKLSGZaP5HkZ8+bY0cxfzwDE5uOmzFXyIwxw==}
@@ -3949,6 +3955,8 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
       sax: 1.4.3
+
+  tailcss@0.0.2: {}
 
   tailwindcss@4.1.18: {}
 
