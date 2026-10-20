@@ -5,13 +5,24 @@ tags: ["AI", "Frontend", "Software Engineering"]
 date: 2026-10-16
 ---
 
-Roles are changing. Not in a neat job-title update, but through a mutation in what we are expected to do, how quickly we must do it, and what counts as valuable work. That is difficult to follow, and harder to adapt to while the ground is still moving.
+Roles are changing. Not in a neat job-title update, but through a mutation in what we (software engineers) are expected to do, how quickly we must do it, and what counts as valuable work. That is difficult to follow, and harder to adapt to while the ground is still moving. I feel both excited and burned out by it.
 
-I am trying to stay positive and not take the black pill. DHH ended his [Rails World 2026 keynote](https://www.youtube.com/watch?v=vDjW_dRyKXY) with: “The black pill is for fucking losers. Don’t be a loser.” I hear a useful challenge to fatalism: try the tools before declaring the future impossible. But optimism is not evidence, and it should not become a demand to celebrate every productivity claim. The question that matters to me is more basic: how do we stay human in a world where the first response to every problem is “ask AI”?
+I am trying to stay positive and not take the black pill. DHH ended his [Rails World 2026 keynote](https://www.youtube.com/watch?v=vDjW_dRyKXY) with: “The black pill is for fucking losers. Don’t be a loser.” I hear a useful challenge to fatalism: try the tools before declaring the future impossible. But optimism is not evidence, and it should not become a demand to celebrate every productivity claim. The question that matters to me is more basic: how do we stay human when the first response to every problem is “ask AI”—or, worse, when someone forwards me an AI-generated answer to a question I asked?
+
+I am trying to work through these questions and find a way to stay healthy in a world changing this quickly.
+
+## The challenge is everywhere
+
+From senior leadership to product teams and social media, AI has become the subject of nearly every conversation about software development. I think that misses the more human question: how do we treat one another and maintain a healthy workplace amid large tech layoffs and rising pressure? The [LGTM](https://www.youtube.com/watch?v=3TNpOD6bov8) music video is funny because it feels **so true**. I read it as a troll, yet CTOs share it on Zoom while the underlying expectations remain:
+
+- Become 10x more productive.
+- Keep CI green despite rising delivery pressure.
+- Maintain delivery quality.
+- If code review slows us down, some suggest turning it off, as in Florian Buetow's [interview about stopping code review](https://www.youtube.com/watch?v=W1uG25of2t0).
 
 ## The ten-times target can become ten simultaneous threads
 
-The promise of a ten-times engineer sounds like leverage. In practice, it can become an expectation to manage several agents, answer product questions, switch between codebases, and review more output—all at once. More parallel work is not automatically more useful work. It can mean more context to hold, more interruptions, and less time to understand what is changing.
+The ten-times-engineer promise can reduce engineering to a question of output volume. In practice, it can become an expectation to manage several agents, answer product questions, switch between codebases, and review more output—all at once. More parallel work is not automatically more useful work. It can mean more context to hold, more interruptions, and less time to understand what is changing.
 
 The evidence does not support one universal multiplier. In a randomized study of 16 experienced open-source developers doing 246 tasks in mature projects, the early-2025 AI tools tested made completion take **19% longer** on average. That is one small, specific study—not a verdict on every model or workflow—but it is enough to challenge blanket targets. The researchers also found that participants expected a speed-up and still believed they had worked faster afterward. [METR’s study](https://arxiv.org/html/2507.09089) is a good reminder to measure completed, reviewed work rather than how productive a tool feels.
 
@@ -59,11 +70,24 @@ But producing a quick response is not the same as understanding which problem is
 
 A six-month randomized field experiment across 56 companies and more than 6,000 knowledge workers found that Copilot reduced time spent on email, but “did not significantly change time spent in meetings.” The authors argue that larger changes in responsibilities require organizational coordination, not just access to a tool. ([Microsoft Research, “Shifting Work Patterns with Generative AI”](https://arxiv.org/html/2504.11436v1)) That is a useful counterweight to the idea that putting AI in everyone’s hands automatically removes the need for collaboration. Product conversations are not just a slower interface for prompting.
 
+In this [interview with Carlos Kelkboom](https://www.youtube.com/watch?v=mkN4uRZYPfs), I heard a point that resonates with me: communication within teams is declining, and that is a mistake.
+
 ## Where does engineering move?
+
+The shift I see is from a single software-engineering role toward a bundle of responsibilities:
+
+- AI workflow specialist: choose models based on their capabilities and cost; understand harnesses, skills, and CLIs.
+- Software engineer: write precise specifications.
+- Architect: review decisions and trade-offs.
+- QA: define assertions for generated output.
+
+At first, this shift can feel overwhelming. Once the novelty wears off, I worry that coordinating agents and reviewing their output could become monotonous.
 
 ### Frontend still owns the experience, even if generation gets cheap
 
 DHH’s keynote describes a bet to rebuild one product across native platforms because agents make that work cheaper; he also notes that “The web is wonderful” when people need access without installing an app. That is one company’s strategy, not proof the browser is obsolete. The frontend work that remains is not only producing components: it is making interaction, accessibility, performance, error states, privacy, and device constraints fit the product and its users. An agent can generate a screen; an engineer still has to decide whether it belongs in the user journey and whether it holds up across real states.
+
+I can see an opportunity for UX to move beyond mockups and prototypes and ship production experiences. So far, though, what I have seen is mostly vibe-coded output that creates more review work. That creates tension. I would like to hear from UX practitioners and product managers experimenting with vibe design: what is working, and what is not?
 
 ### Efficiency means cost per correct outcome, not minimum tokens
 
@@ -88,6 +112,8 @@ Projects such as [OpenCode](https://github.com/anomalyco/opencode) and [Pi](http
 Forward-deployed engineering is one emerging answer to the gap between a capable model and a useful deployment. OpenAI describes its FDE team as partnering with customers “to turn research breakthroughs into production systems.” The role includes discovery, scoping, system design, implementation, rollout, and learning from evaluations in the field. One current US listing advertises a $185,000–$300,000 base range plus equity. That is evidence of one company’s investment in the role, not a market-wide salary or proof that every company will hire a large FDE team. ([OpenAI FDE role](https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco))
 
 The hard part is not installing an agent and moving to the next customer. It is understanding the workflow, integrating responsibly, proving that the deployment helps, and carrying lessons back into a product or platform. If the role is only repeat installation without feedback or durable ownership, the title will not make it meaningful engineering.
+
+It feels like a return to IT consulting, but with a better paycheck. To be honest, I am not very excited about that.
 
 ### Platforms and infrastructure still need engineering—and headcount is uncertain
 
